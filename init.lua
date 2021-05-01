@@ -1,8 +1,3 @@
-require("plugins")
-require("lsps")
-
-print("hello")
-
 -- helpful function for debugging:
 -- from: https://github.com/nanotee/nvim-lua-guide#tips-2
 function _G.dump(...)
@@ -29,7 +24,17 @@ end
 -- ref: https://github.com/nanotee/nvim-lua-guide#vimapinvim_replace_termcodes
 -- The function is called `t` for `termcodes`.
 -- You don't have to call it that, but I find the terseness convenient
-local function t(str)
+function t(str)
     -- Adjust boolean arguments as needed
     return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
+
+DATA_PATH = vim.fn.stdpath('data')
+
+require("plugins")
+require("lsps")
+require("misc")
+vim.cmd('source ' .. vim.fn.stdpath("config") .. '/vimscript/legacy.vim')
+
+print("hello")
+
