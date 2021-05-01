@@ -5,6 +5,7 @@ return require('packer').startup(function(use)
     -- LSP stuff
     use 'neovim/nvim-lspconfig'
     use 'kabouzeid/nvim-lspinstall'
+    use 'hrsh7th/nvim-compe'
 
     -- must have for comments
     use 'tpope/vim-commentary'

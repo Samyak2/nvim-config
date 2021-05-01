@@ -35,6 +35,7 @@ require("plugins")
 require("lsps")
 require("misc")
 require("statusline")
+require('keybinds')
 vim.cmd('source ' .. vim.fn.stdpath("config") .. '/vimscript/legacy.vim')
 
 print("hello")

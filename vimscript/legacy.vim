@@ -13,3 +13,4 @@ autocmd Filetype go setlocal tabstop=2 shiftwidth=2 softtabstop=2 noexpandtab
 
 " spell check for specific files
 autocmd FileType latex,tex,md,markdown setlocal spell
+
