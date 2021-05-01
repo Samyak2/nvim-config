@@ -37,3 +37,17 @@ vim.o.backupdir = DATA_PATH .. '/backup'
 vim.o.directory = DATA_PATH .. '/directory'
 vim.o.undodir = DATA_PATH .. '/undo'
 
+-- spaces instead of tabs
+-- (see vimscript/legacy.vim for filetype specific config)
+vim.o.shiftwidth = 4
+vim.bo.shiftwidth = 4
+
+vim.o.softtabstop = 4
+vim.bo.softtabstop = 4
+
+vim.o.expandtab = true
+vim.bo.expandtab = true
+vim.o.shiftround = false
+
+-- colors
+vim.o.termguicolors = true
