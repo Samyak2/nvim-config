@@ -24,4 +24,10 @@ return require('packer').startup(function(use)
 
     -- colorschemes
     use 'rafi/awesome-vim-colorschemes'
+
+    -- file tree
+    use {
+        'kyazdani42/nvim-tree.lua',
+        requires = {'kyazdani42/nvim-web-devicons'}
+    }
 end)
