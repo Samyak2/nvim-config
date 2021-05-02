@@ -51,3 +51,6 @@ vim.o.shiftround = false
 
 -- colors
 vim.o.termguicolors = true
+vim.o.background = 'dark'
+vim.cmd('colorscheme deep-space')
+-- TODO: set italics (https://github.com/tyrannicaltoucan/vim-deep-space)

@@ -6,6 +6,7 @@ return require('packer').startup(function(use)
     use 'neovim/nvim-lspconfig'
     use 'kabouzeid/nvim-lspinstall'
     use 'hrsh7th/nvim-compe'
+    -- use 'glepnir/lspsaga.nvim'
 
     -- must have for comments
     use 'tpope/vim-commentary'
@@ -20,4 +21,7 @@ return require('packer').startup(function(use)
         -- some optional icons
         requires = {'kyazdani42/nvim-web-devicons', opt = true}
     }
+
+    -- colorschemes
+    use 'rafi/awesome-vim-colorschemes'
 end)
