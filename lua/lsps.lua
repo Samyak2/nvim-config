@@ -1,5 +1,3 @@
-require'lspinstall'.setup()
-
 local function setup_servers()
   require'lspinstall'.setup()
   local servers = require'lspinstall'.installed_servers()
