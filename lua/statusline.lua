@@ -30,7 +30,7 @@ local colors = {
 gls.left[1] = {
     FileIcon = {
         provider = {function() return '  ' end, 'FileIcon'},
-        separator = '|',
+        separator = '| ',
         separator_highlight = {colors.grey, colors.section_bg},
         highlight = {gfi.get_file_icon_color, colors.section_bg},
     }
@@ -49,7 +49,7 @@ gls.left[2] = {
 gls.right[1] = {
     LineColumn = {
         provider = "LineColumn",
-        separator = '|',
+        separator = '| ',
         separator_highlight = {colors.grey, colors.section_bg},
         highlight = {colors.yellow, colors.section_bg}
     }
@@ -74,7 +74,7 @@ gls.right[3] = {
 
 gls.right[4] = {
     GitBranch = {
-        provider = {function() return '  ' end, 'GitBranch'},
+        provider = {function() return '  ' end, 'GitBranch', function() return ' ' end},
         condition = condition.check_git_workspace,
         separator = '|',
         separator_highlight = {colors.grey, colors.section_bg},
