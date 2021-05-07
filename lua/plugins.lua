@@ -30,4 +30,12 @@ return require('packer').startup(function(use)
         'kyazdani42/nvim-tree.lua',
         requires = {'kyazdani42/nvim-web-devicons'}
     }
+
+    -- markdown previews
+    use {
+        'iamcco/markdown-preview.nvim',
+        ft = {'markdown'},
+        cmd = {'MarkdownPreview', 'MarkdownPreviewStop', 'MarkdownPreviewToggle'},
+        config = "vim.call('mkdp#util#install')"
+    }
 end)
