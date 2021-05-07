@@ -38,5 +38,5 @@ require("statusline")
 require('keybinds')
 vim.cmd('source ' .. vim.fn.stdpath("config") .. '/vimscript/legacy.vim')
 
-print("hello")
+print("hello from sam")
 
