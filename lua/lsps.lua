@@ -15,6 +15,7 @@ require'lspinstall'.post_install_hook = function ()
 end
 
 require('lsp.lua-ls')
+require('lsp.go-ls')
 
 -- for nvim-compe
 vim.o.completeopt = "menuone,noselect"
