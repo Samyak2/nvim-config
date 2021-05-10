@@ -16,6 +16,7 @@ end
 
 require('lsp.lua-ls')
 require('lsp.go-ls')
+require('lsp.efm-ls')
 
 -- for nvim-compe
 vim.o.completeopt = "menuone,noselect"
@@ -37,7 +38,7 @@ require'compe'.setup {
   source = {
     path = true;
     buffer = true;
-    calc = true;
+    calc = false;
     nvim_lsp = true;
     nvim_lua = true;
     vsnip = false;

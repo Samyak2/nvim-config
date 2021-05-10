@@ -57,3 +57,7 @@ vim.cmd('colorscheme apprentice')
 -- vim.api.nvim_set_var('oceanic_material_allow_italic', true)
 -- vim.api.nvim_set_var('oceanic_material_allow_bold', true)
 -- TODO: set italics (https://github.com/tyrannicaltoucan/vim-deep-space)
+
+-- folds
+vim.o.foldnestmax = 5
+vim.wo.foldnestmax = 5
