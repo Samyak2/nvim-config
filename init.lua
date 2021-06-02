@@ -31,9 +31,9 @@ end
 
 DATA_PATH = vim.fn.stdpath('data')
 
+require("misc")
 require("plugins")
 require("lsps")
-require("misc")
 require("statusline")
 require('keybinds')
 vim.cmd('source ' .. vim.fn.stdpath("config") .. '/vimscript/legacy.vim')
