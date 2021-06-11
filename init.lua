@@ -1,3 +1,8 @@
+-- stuff that must be at the very beginning
+
+-- inspired by Primeagen, let's see how it goes
+vim.g.mapleader = " "
+
 -- helpful function for debugging:
 -- from: https://github.com/nanotee/nvim-lua-guide#tips-2
 function _G.dump(...)
@@ -36,6 +41,7 @@ require("plugins")
 require("lsps")
 require("statusline")
 require('keybinds')
+require('telescope_conf')
 vim.cmd('source ' .. vim.fn.stdpath("config") .. '/vimscript/legacy.vim')
 
 print("hello from sam")

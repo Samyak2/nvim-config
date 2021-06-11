@@ -38,4 +38,20 @@ return require('packer').startup(function(use)
         cmd = {'MarkdownPreview', 'MarkdownPreviewStop', 'MarkdownPreviewToggle'},
         config = "vim.call('mkdp#util#install')"
     }
+
+    -- nunjucks and jinja2 syntax highlighting
+    use {
+        'lepture/vim-jinja'
+    }
+
+    -- fuzzy finder and more
+    use {
+        'nvim-telescope/telescope.nvim',
+        requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
+    }
+
+    use {
+        'nvim-telescope/telescope-fzy-native.nvim',
+        requires = {{'nvim-telescope/telescope.nvim'}}
+    }
 end)
