@@ -8,6 +8,13 @@ return require('packer').startup(function(use)
     use 'hrsh7th/nvim-compe'
     -- use 'glepnir/lspsaga.nvim'
 
+    -- ast and stuff - gives highlighting
+    use {
+        'nvim-treesitter/nvim-treesitter',
+        run = ':TSUpdate'
+    }
+    use 'nvim-treesitter/playground'
+
     -- must have for comments
     use 'tpope/vim-commentary'
 
@@ -24,6 +31,7 @@ return require('packer').startup(function(use)
 
     -- colorschemes
     use 'rafi/awesome-vim-colorschemes'
+    use 'savq/melange'
 
     -- file tree
     use {
