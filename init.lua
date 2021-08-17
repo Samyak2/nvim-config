@@ -43,6 +43,7 @@ require("statusline")
 require('keybinds')
 require('telescope_conf')
 require('treesitter_conf')
+require('gitsigns_conf')
 vim.cmd('source ' .. vim.fn.stdpath("config") .. '/vimscript/legacy.vim')
 
 print("hello from sam")

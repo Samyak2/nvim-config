@@ -21,8 +21,8 @@ vim.o.ignorecase = true
 vim.o.smartcase = true
 
 -- visualize tabs and newlines
-vim.o.listchars = 'tab:▸ ,trail:·,nbsp:⎵'
-vim.wo.listchars = 'tab:▸ ,trail:·,nbsp:⎵'
+vim.o.listchars = 'tab:· ,trail:▸,nbsp:⎵'
+vim.wo.listchars = 'tab:· ,trail:▸,nbsp:⎵'
 vim.o.list = true
 vim.wo.list = true
 

@@ -57,9 +57,16 @@ return require('packer').startup(function(use)
         'nvim-telescope/telescope.nvim',
         requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
     }
-
     use {
         'nvim-telescope/telescope-fzy-native.nvim',
         requires = {{'nvim-telescope/telescope.nvim'}}
+    }
+
+    -- git signs - show changed lines in gutter, etc.
+    use {
+      'lewis6991/gitsigns.nvim',
+      requires = {
+        'nvim-lua/plenary.nvim'
+      }
     }
 end)
