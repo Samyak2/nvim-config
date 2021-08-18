@@ -5,8 +5,11 @@ return require('packer').startup(function(use)
     -- LSP stuff
     use 'neovim/nvim-lspconfig'
     use 'kabouzeid/nvim-lspinstall'
-    use 'hrsh7th/nvim-compe'
-    -- use 'glepnir/lspsaga.nvim'
+
+    -- coq
+    use { 'ms-jpq/coq_nvim', branch = 'coq'} -- main one
+    use { 'ms-jpq/coq.artifacts', branch= 'artifacts'} -- 9000+ Snippets
+
 
     -- ast and stuff - gives highlighting
     use {
