@@ -18,10 +18,6 @@ require('lsp.lua-ls')
 require('lsp.go-ls')
 require('lsp.efm-ls')
 
--- for nvim-compe
-vim.o.completeopt = "menuone,noselect"
--- vim.cmd('set shortmess+=c')
-
 local check_back_space = function()
     local col = vim.fn.col('.') - 1
     if col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') then
