@@ -39,9 +39,3 @@ nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
 
-" melange colorscheme TSError fix:
-" https://github.com/savq/melange/issues/21#issuecomment-909638293
-augroup melange_fix
-    au!
-    au ColorScheme melange highlight! clear TSError
-augroup END
