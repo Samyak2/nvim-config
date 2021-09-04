@@ -50,11 +50,6 @@ return require('packer').startup(function(use)
         config = "vim.call('mkdp#util#install')"
     }
 
-    -- nunjucks and jinja2 syntax highlighting
-    use {
-        'lepture/vim-jinja'
-    }
-
     -- fuzzy finder and more
     use {
         'nvim-telescope/telescope.nvim',
