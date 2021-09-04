@@ -1,3 +1,14 @@
+-- lsp config
+vim.lsp.handlers["textDocument/publishDiagnostics"] =
+  vim.lsp.with(
+  vim.lsp.diagnostic.on_publish_diagnostics,
+  {
+    -- disable annoying underline
+    underline = false
+  }
+)
+--
+
 local function setup_servers()
   require'lspinstall'.setup()
   local servers = require'lspinstall'.installed_servers()
