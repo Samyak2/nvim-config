@@ -72,4 +72,9 @@ return require('packer').startup(function(use)
         'nvim-lua/plenary.nvim'
       }
     }
+
+    -- session manager
+    use {
+        'rmagatti/auto-session'
+    }
 end)
