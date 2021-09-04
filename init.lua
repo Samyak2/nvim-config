@@ -36,8 +36,10 @@ end
 
 DATA_PATH = vim.fn.stdpath('data')
 
-require("misc")
+-- this sets a global var that is needed before COQ_nvim loads
+require('coq_conf')
 require("plugins")
+require("misc")
 require("lsps")
 require("statusline")
 require('keybinds')
