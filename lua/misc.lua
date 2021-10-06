@@ -64,6 +64,12 @@ vim.cmd('colorscheme photon')
 -- folds
 vim.o.foldnestmax = 5
 vim.wo.foldnestmax = 5
+-- treesitter folds
+vim.cmd("set foldmethod=expr")
+vim.cmd("set foldexpr=nvim_treesitter#foldexpr()")
+-- close all folds by default
+vim.cmd("set foldlevelstart=0")
+
 
 -- nvim-tree settings
 vim.g.nvim_tree_auto_close = 1
