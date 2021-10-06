@@ -35,6 +35,7 @@ return require('packer').startup(function(use)
     -- colorschemes
     use 'rafi/awesome-vim-colorschemes'
     use 'savq/melange'
+    use 'axvr/photon.vim'
 
     -- file tree
     use {
