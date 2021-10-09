@@ -69,19 +69,3 @@ vim.cmd("set foldmethod=expr")
 vim.cmd("set foldexpr=nvim_treesitter#foldexpr()")
 -- close all folds by default
 vim.cmd("set foldlevelstart=0")
-
-
--- nvim-tree settings
-vim.g.nvim_tree_auto_close = 1
-vim.g.nvim_tree_follow = 1
-vim.g.nvim_tree_quit_on_open = 1
--- vim.g.nvim_tree_git_hl = 0
--- vim.g.nvim_tree_gitignore = 0
--- vim.g.nvim_tree_ignore = { '.git', 'node_modules', '.cache', 'env' }
--- vim.g.nvim_tree_group_empty = 1
--- vim.g.nvim_tree_show_icons['git'] = 0
--- vim.g.nvim_tree_show_icons = {
---     git = 0,
---     folders = 1,
---     files = 1,
---  }
