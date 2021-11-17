@@ -4,3 +4,4 @@ require'nvim-tree'.setup {
         enable      = true
     }
 }
+vim.g.nvim_tree_quit_on_open = 1
