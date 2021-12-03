@@ -56,7 +56,8 @@ vim.o.background = 'dark'
 -- vim.cmd('colorscheme fogbell')
 -- vim.cmd('colorscheme apprentice')
 -- vim.cmd('colorscheme melange')
-vim.cmd('colorscheme photon')
+-- vim.cmd('colorscheme photon')
+vim.cmd('colorscheme afterglow')
 -- vim.api.nvim_set_var('oceanic_material_allow_italic', true)
 -- vim.api.nvim_set_var('oceanic_material_allow_bold', true)
 -- TODO: set italics (https://github.com/tyrannicaltoucan/vim-deep-space)
@@ -68,4 +69,4 @@ vim.wo.foldnestmax = 5
 vim.cmd("set foldmethod=expr")
 vim.cmd("set foldexpr=nvim_treesitter#foldexpr()")
 -- close all folds by default
-vim.cmd("set foldlevelstart=0")
+vim.cmd("set foldlevelstart=3")
