@@ -4,7 +4,7 @@ return require('packer').startup(function(use)
 
     -- LSP stuff
     use 'neovim/nvim-lspconfig'
-    use 'kabouzeid/nvim-lspinstall'
+    use 'williamboman/nvim-lsp-installer'
 
     -- coq
     use { 'ms-jpq/coq_nvim', branch = 'coq'} -- main one
@@ -24,6 +24,9 @@ return require('packer').startup(function(use)
     -- must have for quotes, brackets, etc.
     use 'tpope/vim-surround'
 
+    -- must have for html
+    use 'mattn/emmet-vim'
+
     -- the statusline
     use {
         'glepnir/galaxyline.nvim',
@@ -33,9 +36,10 @@ return require('packer').startup(function(use)
     }
 
     -- colorschemes
-    use 'rafi/awesome-vim-colorschemes'
-    use 'savq/melange'
-    use 'axvr/photon.vim'
+    -- use 'rafi/awesome-vim-colorschemes'
+    -- use 'savq/melange'
+    -- use 'axvr/photon.vim'
+    use 'danilo-augusto/vim-afterglow'
 
     -- file tree
     use {

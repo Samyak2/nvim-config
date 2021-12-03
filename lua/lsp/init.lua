@@ -33,6 +33,12 @@ function ret.common_on_attach(client, bufnr)
     buf_set_keymap("v", "<space>fo", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
   end
 
+  -- print(vim.inspect(client.resolved_capabilities))
+  -- if client.resolved_capabilities.code_lens then
+  --     print("virtual types active lets goo")
+  --     require'virtualtypes'.on_attach(client, bufnr)
+  -- end
+
   -- Set autocommands conditional on server_capabilities
   -- if client.resolved_capabilities.document_highlight then
   --   vim.api.nvim_exec([[

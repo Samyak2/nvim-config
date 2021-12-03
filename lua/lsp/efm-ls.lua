@@ -1,5 +1,4 @@
 -- Stolen from: https://github.com/ChristianChiarulli/LunarVim/blob/master/lua/lsp/efm-general-ls.lua
-
 -- Example configuations here: https://github.com/mattn/efm-langserver
 -- python
 local python_arguments = {}
@@ -30,16 +29,13 @@ local luaFormat = {
     formatStdin = true
 }
 
-local lua_fmt = {
-    formatCommand = "luafmt --indent-count 2 --line-width 120 --stdin",
-    formatStdin = true
-}
+local lua_fmt = {formatCommand = "luafmt --indent-count 2 --line-width 120 --stdin", formatStdin = true}
 
-local lua_formatter =  'lua-format'
+local lua_formatter = 'lua-format'
 if lua_formatter == 'lua-format' then
-  table.insert(lua_arguments, luaFormat)
+    table.insert(lua_arguments, luaFormat)
 elseif lua_formatter == 'lua-fmt' then
-  table.insert(lua_arguments, lua_fmt)
+    table.insert(lua_arguments, lua_fmt)
 end
 
 -- sh
@@ -90,33 +86,48 @@ if tsserver_linter == 'eslint' then table.insert(tsserver_args, eslint) end
 
 local markdownPandocFormat = {formatCommand = 'pandoc -f markdown -t gfm -sp --tab-stop=2', formatStdin = true}
 
-require"lspconfig".efm.setup {
-    -- init_options = {initializationOptions},
-    cmd = {vim.fn.stdpath('data') .. "/lspinstall/efm/efm-langserver"},
-    init_options = {documentFormatting = true, codeAction = false},
-    filetypes = {"lua", "python", "javascriptreact", "javascript", "typescript","typescriptreact","sh", "html", "css", "json", "yaml", "markdown", "vue"},
-    settings = {
-        rootMarkers = {".git/"},
-        languages = {
-            python = python_arguments,
-            lua = lua_arguments,
-            sh = sh_arguments,
-            javascript = tsserver_args,
-            javascriptreact = tsserver_args,
-			typescript = tsserver_args,
-			typescriptreact = tsserver_args,
-            html = {prettier},
-            css = {prettier},
-            json = {prettier},
-            yaml = {prettier},
-            markdown = {markdownPandocFormat}
-            -- javascriptreact = {prettier, eslint},
-            -- javascript = {prettier, eslint},
-            -- markdown = {markdownPandocFormat, markdownlint},
+local lsp_installer_servers = require 'nvim-lsp-installer.servers'
+
+local server_available, requested_server = lsp_installer_servers.get_server("efm")
+
+if server_available then
+    requested_server:on_ready(function()
+        requested_server:setup{
+            -- cmd = {vim.fn.stdpath('data') .. "/lspinstall/efm/efm-langserver"},
+            -- init_options = {initializationOptions},
+            init_options = {documentFormatting = true, codeAction = true},
+            settings = {
+                rootMarkers = {".git/"},
+                languages = {
+                    python = python_arguments,
+                    lua = lua_arguments,
+                    sh = sh_arguments,
+                    javascript = tsserver_args,
+                    javascriptreact = tsserver_args,
+                    typescript = tsserver_args,
+                    typescriptreact = tsserver_args,
+                    html = {prettier},
+                    css = {prettier},
+                    json = {prettier},
+                    yaml = {prettier},
+                    markdown = {markdownPandocFormat}
+                    -- javascriptreact = {prettier, eslint},
+                    -- javascript = {prettier, eslint},
+                    -- markdown = {markdownPandocFormat, markdownlint},
+                }
+            },
+            filetypes = {
+                "lua", "python", "javascriptreact", "javascript", "typescript", "typescriptreact", "sh", "html", "css",
+                "json", "yaml", "markdown", "vue"
+            },
+            on_attach = require'lsp'.common_on_attach
         }
-    },
-    on_attach = require'lsp'.common_on_attach
-}
+    end)
+    if not requested_server:is_installed() then
+        -- Queue the server to be installed
+        requested_server:install()
+    end
+end
 
 -- Also find way to toggle format on save
 -- maybe this will help: https://superuser.com/questions/439078/how-to-disable-autocmd-or-augroup-in-vim

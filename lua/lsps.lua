@@ -9,21 +9,24 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] =
 )
 --
 
-local function setup_servers()
-  require'lspinstall'.setup()
-  local servers = require'lspinstall'.installed_servers()
-  for _, server in pairs(servers) do
-    require'lspconfig'[server].setup{on_attach = require'lsp'.common_on_attach}
-  end
-end
+-- lsp-installer begin
+local lsp_installer = require("nvim-lsp-installer")
 
-setup_servers()
+-- Register a handler that will be called for all installed servers.
+lsp_installer.on_server_ready(function(server)
+    local opts = {}
 
--- Automatically reload after `:LspInstall <server>` so we don't have to restart neovim
-require'lspinstall'.post_install_hook = function ()
-  setup_servers() -- reload installed servers
-  vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
-end
+    -- ignore the ones that are setup manually later, with more options and stuff
+    if server.name == "efm" or server.name == "sumneko_lua" or server.name == "gopls" then
+        return
+    end
+
+    -- This setup() function is exactly the same as lspconfig's setup function.
+    -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
+    server:setup(opts)
+end)
+
+-- lsp-installer end
 
 require('lsp.lua-ls')
 require('lsp.go-ls')
