@@ -39,7 +39,8 @@ return require('packer').startup(function(use)
     -- use 'rafi/awesome-vim-colorschemes'
     -- use 'savq/melange'
     -- use 'axvr/photon.vim'
-    use 'danilo-augusto/vim-afterglow'
+    -- use 'danilo-augusto/vim-afterglow'
+    use "rafamadriz/neon"
 
     -- file tree
     use {
