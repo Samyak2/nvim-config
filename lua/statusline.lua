@@ -4,6 +4,8 @@
 local conditions = require("heirline.conditions")
 local utils = require("heirline.utils")
 
+local sep = " | "
+
 local colors = {
     red = utils.get_highlight("DiagnosticError").fg,
     green = utils.get_highlight("String").fg,
@@ -24,6 +26,10 @@ local colors = {
         change = utils.get_highlight("diffChanged").fg,
     },
 }
+
+local Align = { provider = "%=" }
+local Space = { provider = " " }
+local Separator = { provider = sep, hl = { fg = colors.gray } }
 
 local Mode = {
     -- get vim current mode, this information will be required by the provider
@@ -179,7 +185,7 @@ local Ruler = {
     -- %L = number of lines in the buffer
     -- %c = column number
     -- %P = percentage through file of displayed window
-    provider = "%7(%l/%L%):%2c %P",
+    provider = "%2l/%L:%2c %P",
 }
 
 -- I take no credits for this! :lion:
@@ -214,60 +220,61 @@ local LSPActive = {
 
 -- See lsp-status/README.md for configuration options.
 local LSPMessages = {
-    provider = function() return require("lsp-status/statusline").progress() end,
+    provider = function()
+        local text = require("lsp-status/statusline").progress()
+        if text ~= "" and text ~= nil then
+            text = text .. sep
+        end
+        return text
+    end,
     hl = { fg = colors.gray },
 }
 
--- local Diagnostics = {
+local Diagnostics = {
 
---     condition = conditions.has_diagnostics,
+    condition = conditions.has_diagnostics,
 
---     static = {
---         error_icon = vim.fn.sign_getdefined("DiagnosticSignError")[1].text,
---         warn_icon = vim.fn.sign_getdefined("DiagnosticSignWarn")[1].text,
---         info_icon = vim.fn.sign_getdefined("DiagnosticSignInfo")[1].text,
---         hint_icon = vim.fn.sign_getdefined("DiagnosticSignHint")[1].text,
---     },
+    static = {
+        error_icon = (vim.fn.sign_getdefined("DiagnosticSignError")[1] or {text = "E "}).text,
+        warn_icon = (vim.fn.sign_getdefined("DiagnosticSignWarn")[1] or {text = "W "}).text,
+        info_icon = (vim.fn.sign_getdefined("DiagnosticSignInfo")[1] or {text = "I "}).text,
+        hint_icon = (vim.fn.sign_getdefined("DiagnosticSignHint")[1] or {text = "H "}).text,
+    },
 
---     init = function(self)
---         self.errors = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.ERROR })
---         self.warnings = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.WARN })
---         self.hints = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.HINT })
---         self.info = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.INFO })
---     end,
+    init = function(self)
+        self.errors = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.ERROR })
+        self.warnings = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.WARN })
+        self.hints = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.HINT })
+        self.info = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.INFO })
+    end,
 
---     {
---         provider = "![",
---     },
---     {
---         provider = function(self)
---             -- 0 is just another output, we can decide to print it or not!
---             return self.errors > 0 and (self.error_icon .. self.errors .. " ")
---         end,
---         hl = { fg = colors.diag.error },
---     },
---     {
---         provider = function(self)
---             return self.warnings > 0 and (self.warn_icon .. self.warnings .. " ")
---         end,
---         hl = { fg = colors.diag.warn },
---     },
---     {
---         provider = function(self)
---             return self.info > 0 and (self.info_icon .. self.info .. " ")
---         end,
---         hl = { fg = colors.diag.info },
---     },
---     {
---         provider = function(self)
---             return self.hints > 0 and (self.hint_icon .. self.hints)
---         end,
---         hl = { fg = colors.diag.hint },
---     },
---     {
---         provider = "]",
---     },
--- }
+    {
+        provider = function(self)
+            -- 0 is just another output, we can decide to print it or not!
+            return self.errors > 0 and (self.error_icon .. self.errors .. " ")
+        end,
+        hl = { fg = colors.diag.error },
+    },
+    {
+        provider = function(self)
+            return self.warnings > 0 and (self.warn_icon .. self.warnings .. " ")
+        end,
+        hl = { fg = colors.diag.warn },
+    },
+    {
+        provider = function(self)
+            return self.info > 0 and (self.info_icon .. self.info .. " ")
+        end,
+        hl = { fg = colors.diag.info },
+    },
+    {
+        provider = function(self)
+            return self.hints > 0 and (self.hint_icon .. self.hints)
+        end,
+        hl = { fg = colors.diag.hint },
+    },
+    Separator,
+}
 
 local Git = {
     condition = conditions.is_git_repo,
@@ -347,14 +354,10 @@ local HelpFileName = {
     hl = { fg = colors.blue },
 }
 
-local Align = { provider = "%=" }
-local Space = { provider = " " }
-local Separator = { provider = " | ", hl = { fg = colors.gray } }
-
 local DefaultStatusline = {
     Mode, Separator, FileFormat, Space, FileNameBlock, Separator, Git, Align,
     Align,
-    LSPActive, Separator, LSPMessages, Space, FileType, Space, Ruler, Space, ScrollBar
+    LSPActive, Separator, LSPMessages, Diagnostics, FileType, Separator, Ruler, Space, ScrollBar
 }
 
 local InactiveStatusline = {
