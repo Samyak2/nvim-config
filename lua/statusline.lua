@@ -173,10 +173,14 @@ local FileEncoding = {
     end
 }
 local FileFormat = {
+    condition = function()
+        return vim.bo.fileformat ~= 'unix'
+    end,
     provider = function()
         local fmt = vim.bo.fileformat
-        return fmt ~= 'unix' and fmt:upper()
-    end
+        return fmt:upper()
+    end,
+    Separator
 }
 
 -- We're getting minimalists here!
@@ -355,7 +359,7 @@ local HelpFileName = {
 }
 
 local DefaultStatusline = {
-    Mode, Separator, FileFormat, Space, FileNameBlock, Separator, Git, Align,
+    Mode, Separator, FileFormat, FileNameBlock, Separator, Git, Align,
     Align,
     LSPActive, Separator, LSPMessages, Diagnostics, FileType, Separator, Ruler, Space, ScrollBar
 }
