@@ -40,7 +40,8 @@ return require('packer').startup(function(use)
     -- use 'savq/melange'
     -- use 'axvr/photon.vim'
     -- use 'danilo-augusto/vim-afterglow'
-    use "rafamadriz/neon"
+    -- use "rafamadriz/neon"
+    use "rebelot/kanagawa.nvim"
 
     -- file tree
     use {
