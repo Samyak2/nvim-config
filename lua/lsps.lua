@@ -17,7 +17,7 @@ lsp_installer.on_server_ready(function(server)
     local opts = {}
 
     -- ignore the ones that are setup manually later, with more options and stuff
-    if server.name == "efm" or server.name == "sumneko_lua" or server.name == "gopls" then
+    if server.name == "efm" or server.name == "sumneko_lua" or server.name == "gopls" or server.name == "rust_analyzer" then
         return
     end
 
@@ -32,6 +32,7 @@ end)
 
 require('lsp.lua-ls')
 require('lsp.go-ls')
+require('lsp.rust-ls')
 require('lsp.efm-ls')
 
 local check_back_space = function()

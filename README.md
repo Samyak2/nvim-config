@@ -7,6 +7,7 @@ My custom neovim configuration written in (mostly) lua.
  - [`packer.nvim`](https://github.com/wbthomason/packer.nvim#quickstart) - the plugin manager
  - [ripgrep](https://github.com/BurntSushi/ripgrep#installation) - for telescope fuzzy finding in files
  - python venv - required by `coq_nvim` (more info in [coq's README](https://github.com/ms-jpq/coq_nvim#install))
+ - `lldb` if you need Rust debugging
 
 ## Code structure
 

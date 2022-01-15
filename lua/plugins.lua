@@ -75,6 +75,15 @@ return require('packer').startup(function(use)
       }
     }
 
+    -- rust goodies
+    use {
+        'simrat39/rust-tools.nvim',
+        requires = {
+          'nvim-lua/plenary.nvim',
+          'mfussenegger/nvim-dap'
+        }
+    }
+
     -- session manager
     use {
         'rmagatti/auto-session'
