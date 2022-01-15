@@ -5,6 +5,8 @@ return require('packer').startup(function(use)
     -- LSP stuff
     use 'neovim/nvim-lspconfig'
     use 'williamboman/nvim-lsp-installer'
+    -- for lsp in statusline
+    use 'nvim-lua/lsp-status.nvim'
 
     -- coq
     use { 'ms-jpq/coq_nvim', branch = 'coq'} -- main one
@@ -29,9 +31,7 @@ return require('packer').startup(function(use)
 
     -- the statusline
     use {
-        'glepnir/galaxyline.nvim',
-        branch = 'main',
-        -- some optional icons
+        "rebelot/heirline.nvim",
         requires = {'kyazdani42/nvim-web-devicons', opt = true}
     }
 
