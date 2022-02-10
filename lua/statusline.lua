@@ -380,7 +380,7 @@ local SpecialStatusline = {
         })
     end,
 
-    FileType, Space, HelpFileName, Align
+    FileType, Space, HelpFileName, Align, Ruler, Space, ScrollBar,
 }
 
 local StatusLines = {
