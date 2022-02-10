@@ -2,7 +2,7 @@
 
 " Jump to last position
 autocmd BufReadPost *
-  \ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
+  \ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'gitcommit'
   \ |   exe "normal! g`\""
   \ | endif
 
