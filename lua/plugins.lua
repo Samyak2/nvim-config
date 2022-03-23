@@ -85,6 +85,9 @@ return require('packer').startup(function(use)
         }
     }
 
+    -- vimwiki!
+    use { 'vimwiki/vimwiki', branch='dev' }
+
     -- session manager
     use {
         'rmagatti/auto-session'

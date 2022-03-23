@@ -48,6 +48,7 @@ require('treesitter_conf')
 require('gitsigns_conf')
 require('nvim_tree_conf')
 require('neovide_conf')
+require('vimwiki_conf')
 vim.cmd('source ' .. vim.fn.stdpath("config") .. '/vimscript/legacy.vim')
 
 print("hello from sam")
