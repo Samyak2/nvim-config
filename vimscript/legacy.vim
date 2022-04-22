@@ -18,12 +18,6 @@ autocmd FileType latex,tex,md,markdown setlocal spell
 autocmd FileType julia setlocal commentstring=#\ %s
 autocmd FileType c,cpp,java setlocal commentstring=//\ %s
 
-" telescope keybinds because im too lazy
-nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
-nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
-nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
-nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
-
 " nicer keybinds in terminal
 tnoremap <Esc> <C-\><C-n>
 tnoremap <A-h> <C-\><C-N><C-w>h

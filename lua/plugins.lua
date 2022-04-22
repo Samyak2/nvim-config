@@ -75,6 +75,9 @@ return require('packer').startup(function(use)
       }
     }
 
+    -- nicer keybinds
+    use 'LionC/nest.nvim'
+
     -- rust goodies
     use {
         'simrat39/rust-tools.nvim',

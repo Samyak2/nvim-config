@@ -1,11 +1,36 @@
--- move up/down lines nicely even when a line has been wrapped
-vim.api.nvim_set_keymap('n', 'j', 'gj', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', 'k', 'gk', { noremap = true, silent = true })
+local nest = require('nest')
 
-vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
-vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
-vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
-vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
-
--- for nvim-tree.lua
-vim.api.nvim_set_keymap('n', '<C-f>', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
+nest.applyKeymaps {
+    -- move up/down lines nicely even when a line has been wrapped
+    { "j", "gj" },
+    { "k", "gk" },
+    { mode = "i", {
+        -- use tab to navigate completions
+        { options = { expr = true }, {
+            { "<Tab>", "v:lua.tab_complete()" },
+            { "<S-Tab>", "v:lua.s_tab_complete()" },
+        }}
+    }},
+    { mode = "s", {
+        -- use tab to navigate completions
+        { options = { expr = true }, {
+            { "<Tab>", "v:lua.tab_complete()" },
+            { "<S-Tab>", "v:lua.s_tab_complete()" },
+        }}
+    }},
+    -- for nvim-tree.lua
+    { "<C-f>", ":NvimTreeToggle<CR>" },
+    -- telescope
+    { "<leader>", {
+        { "f", {
+            { "f", "<cmd>Telescope find_files<cr>" },
+            { "g", "<cmd>Telescope live_grep<cr>" },
+            { "b", "<cmd>Telescope buffers<cr>" },
+            { "h", "<cmd>Telescope help_tags<cr>" },
+            { "s", "<cmd>Telescope grep_string<cr>" },
+            { "z", "<cmd>Telescope spell_suggest<cr>" },
+            { "c", "<cmd>Telescope current_buffer_fuzzy_find<cr>" },
+            { "r", "<cmd>Telescope resume<cr>" },
+        }},
+    }}
+}
