@@ -2,7 +2,6 @@ local nest = require('nest')
 local ret = {}
 
 function ret.common_on_attach(client, bufnr)
-  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
@@ -11,9 +10,9 @@ function ret.common_on_attach(client, bufnr)
   nest.applyKeymaps {
       { "g", {
           { "D", "<cmd>lua vim.lsp.buf.declaration()<cr>" },
-          { "d", "<cmd>lua vim.lsp.buf.definition()<cr>" },
-          { "i", "<cmd>lua vim.lsp.buf.implementation()<cr>" },
-          { "r", "<cmd>lua vim.lsp.buf.references()<cr>" },
+          { "d", "<cmd>Telescope lsp_definitions<cr>" },
+          { "i", "<cmd>Telescope lsp_implementations<cr>" },
+          { "r", "<cmd>Telescope lsp_references<cr>" },
       }},
       { "K", "<cmd>lua vim.lsp.buf.hover()<cr>" },
       { "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<cr>" },
