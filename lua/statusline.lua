@@ -85,7 +85,7 @@ local Mode = {
     -- Same goes for the highlight. Now the foreground will change according to the current mode.
     hl = function(self)
         local mode = self.mode:sub(1, 1) -- get only the first mode character
-        return { fg = self.mode_colors[mode], style = "bold", }
+        return { fg = self.mode_colors[mode], bold = true, }
     end,
 }
 
@@ -147,7 +147,7 @@ local FileNameModifer = {
     hl = function()
         if vim.bo.modified then
             -- use `force` because we need to override the child's hl foreground
-            return { fg = colors.cyan, style = 'bold', force=true }
+            return { fg = colors.cyan, bold = true, force=true }
         end
     end,
 }
@@ -164,7 +164,7 @@ local FileType = {
     provider = function()
         return string.upper(vim.bo.filetype)
     end,
-    hl = { fg = utils.get_highlight("Type").fg, style = 'bold' },
+    hl = { fg = utils.get_highlight("Type").fg, bold = true, },
 }
 local FileEncoding = {
     provider = function()
@@ -219,7 +219,7 @@ local LSPActive = {
         end
         return " " .. table.concat(names, " ")
     end,
-    hl = { fg = colors.green, style = "bold" },
+    hl = { fg = colors.green, bold = true, },
 }
 
 -- See lsp-status/README.md for configuration options.
@@ -295,7 +295,7 @@ local Git = {
         provider = function(self)
             return " " .. self.status_dict.head
         end,
-        hl = {style = 'bold'}
+        hl = {bold = true}
     },
     -- You could handle delimiters, icons and counts similar to Diagnostics
     {
@@ -344,7 +344,7 @@ local WorkDir = {
         local trail = cwd:sub(-1) == '/' and '' or "/"
         return icon .. cwd  .. trail
     end,
-    hl = { fg = colors.blue, style = "bold" },
+    hl = { fg = colors.blue, bold = true, },
 }
 
 local HelpFileName = {
@@ -397,7 +397,7 @@ local StatusLines = {
             }
         end
     end,
-    stop_at_first = true,
+    init = require'heirline.utils'.pick_child_on_condition,
     SpecialStatusline, InactiveStatusline, DefaultStatusline,
 }
 
