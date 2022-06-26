@@ -36,13 +36,12 @@ end
 
 DATA_PATH = vim.fn.stdpath('data')
 
--- this sets a global var that is needed before COQ_nvim loads
-require('coq_conf')
 require("plugins")
 require("misc")
 require("lsps")
 require("statusline")
 require('keybinds')
+require('cmp_conf')
 require('telescope_conf')
 require('treesitter_conf')
 require('gitsigns_conf')
@@ -51,5 +50,5 @@ require('neovide_conf')
 require('vimwiki_conf')
 vim.cmd('source ' .. vim.fn.stdpath("config") .. '/vimscript/legacy.vim')
 
-print("hello from sam")
+print("config loaded")
 

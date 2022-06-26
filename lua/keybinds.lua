@@ -4,20 +4,6 @@ nest.applyKeymaps {
     -- move up/down lines nicely even when a line has been wrapped
     { "j", "gj" },
     { "k", "gk" },
-    { mode = "i", {
-        -- use tab to navigate completions
-        { options = { expr = true }, {
-            { "<Tab>", "v:lua.tab_complete()" },
-            { "<S-Tab>", "v:lua.s_tab_complete()" },
-        }}
-    }},
-    { mode = "s", {
-        -- use tab to navigate completions
-        { options = { expr = true }, {
-            { "<Tab>", "v:lua.tab_complete()" },
-            { "<S-Tab>", "v:lua.s_tab_complete()" },
-        }}
-    }},
     -- for nvim-tree.lua
     { "<C-f>", ":NvimTreeToggle<CR>" },
     -- telescope

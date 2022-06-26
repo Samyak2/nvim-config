@@ -8,10 +8,20 @@ return require('packer').startup(function(use)
     -- for lsp in statusline
     use 'nvim-lua/lsp-status.nvim'
 
-    -- coq
-    use { 'ms-jpq/coq_nvim', branch = 'coq'} -- main one
-    use { 'ms-jpq/coq.artifacts', branch= 'artifacts'} -- 9000+ Snippets
-
+    -- completion
+    use 'hrsh7th/cmp-nvim-lsp'
+    use 'hrsh7th/cmp-nvim-lsp-document-symbol'
+    use 'hrsh7th/cmp-buffer'
+    use 'hrsh7th/cmp-path'
+    use 'hrsh7th/cmp-cmdline'
+    use 'hrsh7th/nvim-cmp'
+    use {'petertriho/cmp-git', requires = 'nvim-lua/plenary.nvim'}
+    use 'davidsierradz/cmp-conventionalcommits'
+    use 'andersevenrud/cmp-tmux'
+    -- snippets
+    use 'rafamadriz/friendly-snippets'
+    use 'hrsh7th/cmp-vsnip'
+    use 'hrsh7th/vim-vsnip'
 
     -- ast and stuff - gives highlighting
     use {
