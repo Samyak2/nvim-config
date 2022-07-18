@@ -18,6 +18,7 @@ return require('packer').startup(function(use)
     use {'petertriho/cmp-git', requires = 'nvim-lua/plenary.nvim'}
     use 'davidsierradz/cmp-conventionalcommits'
     use 'andersevenrud/cmp-tmux'
+    use 'onsails/lspkind.nvim'
     -- snippets
     use 'rafamadriz/friendly-snippets'
     use 'hrsh7th/cmp-vsnip'
@@ -51,7 +52,32 @@ return require('packer').startup(function(use)
     -- use 'axvr/photon.vim'
     -- use 'danilo-augusto/vim-afterglow'
     -- use "rafamadriz/neon"
-    use "rebelot/kanagawa.nvim"
+    use {
+        "rebelot/kanagawa.nvim",
+        config = function()
+            vim.cmd("colorscheme kanagawa")
+        end
+    }
+    -- use {
+    --     "glepnir/zephyr-nvim",
+    --     config = function()
+    --         vim.cmd("colorscheme zephyr")
+    --     end
+    -- }
+    -- use {
+    --     "devnnys/orca.nvim",
+    --     config = function()
+    --         vim.cmd("colorscheme orca")
+    --     end
+    -- }
+    -- use {
+    --     "rose-pine/neovim",
+    --     as = "rose-pine",
+    --     tag = "v1.*",
+    --     config = function()
+    --         vim.cmd("colorscheme rose-pine")
+    --     end
+    -- }
 
     -- file tree
     use {

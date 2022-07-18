@@ -6,11 +6,14 @@ local utils = require("heirline.utils")
 
 local sep = " | "
 
+local right_arrow_sep = " ⟩ "
+local left_arrow_sep = " ⟨ "
+
 local colors = {
     red = utils.get_highlight("DiagnosticError").fg,
     green = utils.get_highlight("String").fg,
     blue = utils.get_highlight("Function").fg,
-    gray = utils.get_highlight("NonText").fg,
+    gray = utils.get_highlight("Ignore").fg,
     orange = utils.get_highlight("DiagnosticWarn").fg,
     purple = utils.get_highlight("Statement").fg,
     cyan = utils.get_highlight("Special").fg,
@@ -20,16 +23,12 @@ local colors = {
         hint = utils.get_highlight("DiagnosticHint").fg,
         info = utils.get_highlight("DiagnosticInfo").fg,
     },
-    git = {
-        del = utils.get_highlight("diffDeleted").fg,
-        add = utils.get_highlight("diffAdded").fg,
-        change = utils.get_highlight("diffChanged").fg,
-    },
 }
 
 local Align = { provider = "%=" }
 local Space = { provider = " " }
-local Separator = { provider = sep, hl = { fg = colors.gray } }
+local LeftSideSeparator = { provider = right_arrow_sep, hl = { fg = colors.gray } }
+local RightSideSeparator = { provider = left_arrow_sep, hl = { fg = colors.gray } }
 
 local Mode = {
     -- get vim current mode, this information will be required by the provider
@@ -164,7 +163,7 @@ local FileType = {
     provider = function()
         return string.upper(vim.bo.filetype)
     end,
-    hl = { fg = utils.get_highlight("Type").fg, bold = true, },
+    hl = { fg = utils.get_highlight("StatusLine").fg, bold = true, },
 }
 local FileEncoding = {
     provider = function()
@@ -180,7 +179,7 @@ local FileFormat = {
         local fmt = vim.bo.fileformat
         return fmt:upper()
     end,
-    Separator
+    LeftSideSeparator
 }
 
 -- We're getting minimalists here!
@@ -277,7 +276,7 @@ local Diagnostics = {
         end,
         hl = { fg = colors.diag.hint },
     },
-    Separator,
+    RightSideSeparator,
 }
 
 local Git = {
@@ -309,21 +308,21 @@ local Git = {
             local count = self.status_dict.added or 0
             return count > 0 and ("+" .. count)
         end,
-        hl = { fg = colors.git.add },
+        hl = { fg = utils.get_highlight("DiffAdd").fg, bg = utils.get_highlight("DiffAdd").bg, },
     },
     {
         provider = function(self)
             local count = self.status_dict.removed or 0
             return count > 0 and ("-" .. count)
         end,
-        hl = { fg = colors.git.del },
+        hl = { fg = utils.get_highlight("DiffDelete").fg, bg = utils.get_highlight("DiffDelete").bg, },
     },
     {
         provider = function(self)
             local count = self.status_dict.changed or 0
             return count > 0 and ("~" .. count)
         end,
-        hl = { fg = colors.git.change },
+        hl = { fg = utils.get_highlight("DiffChange").fg, bg = utils.get_highlight("DiffChange").bg, },
     },
     {
         condition = function(self)
@@ -359,9 +358,9 @@ local HelpFileName = {
 }
 
 local DefaultStatusline = {
-    Mode, Separator, FileFormat, FileNameBlock, Separator, Git, Align,
+    Mode, LeftSideSeparator, FileFormat, FileNameBlock, LeftSideSeparator, Git, LeftSideSeparator, Align,
     Align,
-    LSPActive, Separator, LSPMessages, Diagnostics, FileType, Separator, Ruler, Space, ScrollBar
+    RightSideSeparator, LSPActive, RightSideSeparator, LSPMessages, Diagnostics, FileType, RightSideSeparator, Ruler
 }
 
 local InactiveStatusline = {
@@ -369,7 +368,7 @@ local InactiveStatusline = {
         return not conditions.is_active()
     end,
 
-    FileType, Separator, FileNameBlock, Align,
+    FileType, LeftSideSeparator, FileNameBlock, Align,
 }
 
 local SpecialStatusline = {
@@ -380,7 +379,7 @@ local SpecialStatusline = {
         })
     end,
 
-    FileType, Space, HelpFileName, Align, Ruler, Space, ScrollBar,
+    FileType, Space, HelpFileName, Align, Ruler, Space
 }
 
 local StatusLines = {

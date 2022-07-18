@@ -51,7 +51,7 @@ vim.o.shiftround = false
 
 -- colors
 vim.o.termguicolors = true
-vim.o.background = 'dark'
+-- vim.o.background = 'dark'
 -- vim.cmd('colorscheme dogrun')
 -- vim.cmd('colorscheme fogbell')
 -- vim.cmd('colorscheme apprentice')
@@ -61,7 +61,6 @@ vim.o.background = 'dark'
 -- vim.g.neon_style = "doom"
 -- vim.g.neon_transparent = true
 -- vim.cmd('colorscheme neon')
-vim.cmd('colorscheme kanagawa')
 -- vim.api.nvim_set_var('oceanic_material_allow_italic', true)
 -- vim.api.nvim_set_var('oceanic_material_allow_bold', true)
 -- TODO: set italics (https://github.com/tyrannicaltoucan/vim-deep-space)

@@ -4,6 +4,8 @@ vim.cmd('set completeopt=menu,menuone,noselect')
 
 local cmp = require 'cmp'
 
+local lspkind = require 'lspkind'
+
 cmp.setup({
     snippet = {
         -- REQUIRED - you must specify a snippet engine
@@ -27,19 +29,31 @@ cmp.setup({
     }),
     sources = cmp.config.sources({
         { name = 'nvim_lsp' },
-        { name = 'git' }, -- also works in some files besides GITCOMMIT
-        { name = 'tmux', option = {
-                all_panes = true,
-            }
-        },
         { name = 'vsnip' }, -- For vsnip users.
         -- { name = 'luasnip' }, -- For luasnip users.
         -- { name = 'ultisnips' }, -- For ultisnips users.
         -- { name = 'snippy' }, -- For snippy users.
     }, {
+        { name = 'git' }, -- also works in some files besides GITCOMMIT
+        { name = 'tmux', option = {
+            all_panes = true,
+        }
+        },
         { name = 'buffer' },
         { name = 'path' },
-    })
+    }),
+    formatting = {
+        format = lspkind.cmp_format({
+            mode = 'symbol', -- show only symbol annotations
+            maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+
+            -- The function below will be called before any actual modifications from lspkind
+            -- so that you can provide more controls on popup customization. (See [#30](https://github.com/onsails/lspkind-nvim/pull/30))
+            before = function(entry, vim_item)
+                return vim_item
+            end
+        })
+    }
 })
 
 -- Set configuration for specific filetype.
@@ -72,7 +86,7 @@ cmp.setup.cmdline(':', {
     })
 })
 
-require("cmp_git").setup{
+require("cmp_git").setup {
     filetypes = { "gitcommit", "octo", "markdown" },
 }
 
