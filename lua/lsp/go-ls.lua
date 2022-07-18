@@ -4,7 +4,7 @@ local server_available, requested_server = lsp_installer_servers.get_server("gop
 
 if server_available then
     requested_server:on_ready(function()
-        requested_server:setup{
+        local opts = vim.tbl_deep_extend("force", require("lsp").common_opts, {
             settings = {
                 gopls = {
                     analyses = {unusedparams = true, fieldalignment = true, nilness = true},
@@ -13,8 +13,8 @@ if server_available then
                 }
             },
             init_options = {usePlaceholders = true, completeUnimported = true},
-            on_attach = require'lsp'.common_on_attach
-        }
+        })
+        requested_server:setup(opts)
     end)
     if not requested_server:is_installed() then
         -- Queue the server to be installed

@@ -10,8 +10,7 @@ if server_available then
         local codelldb_path = extension_path .. 'adapter/codelldb'
         local liblldb_path = extension_path .. 'lldb/lib/liblldb.so'
 
-        local opts = {
-            on_attach = require('lsp').common_on_attach,
+        local opts = vim.tbl_deep_extend("force", require("lsp").common_opts, {
             autoSetHints = true,
             -- dap = {
             --     adapter = require('rust-tools.dap').get_codelldb_adapter(
@@ -23,7 +22,7 @@ if server_available then
             debuggables = {
                 use_telescope = true
             },
-        }
+        })
 
         require("rust-tools").setup{
             server = vim.tbl_deep_extend("force", requested_server:get_default_options(), opts),

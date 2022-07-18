@@ -22,7 +22,7 @@ local lsp_installer_servers = require 'nvim-lsp-installer.servers'
 local server_available, requested_server = lsp_installer_servers.get_server("sumneko_lua")
 if server_available then
     requested_server:on_ready(function()
-        requested_server:setup{
+        local opts = vim.tbl_deep_extend("force", require("lsp").common_opts, {
             -- cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"};
             settings = {
                 Lua = {
@@ -44,8 +44,8 @@ if server_available then
                     telemetry = {enable = false}
                 }
             },
-            on_attach = require'lsp'.common_on_attach
-        }
+        })
+        requested_server:setup(opts)
     end)
     if not requested_server:is_installed() then
         -- Queue the server to be installed

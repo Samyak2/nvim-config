@@ -92,7 +92,7 @@ local server_available, requested_server = lsp_installer_servers.get_server("efm
 
 if server_available then
     requested_server:on_ready(function()
-        requested_server:setup{
+        local opts = vim.tbl_deep_extend("force", require("lsp").common_opts, {
             -- cmd = {vim.fn.stdpath('data') .. "/lspinstall/efm/efm-langserver"},
             -- init_options = {initializationOptions},
             init_options = {documentFormatting = true, codeAction = true},
@@ -120,8 +120,8 @@ if server_available then
                 "lua", "python", "javascriptreact", "javascript", "typescript", "typescriptreact", "sh", "html", "css",
                 "json", "yaml", "markdown", "vue"
             },
-            on_attach = require'lsp'.common_on_attach
-        }
+        })
+        requested_server:setup(opts)
     end)
     if not requested_server:is_installed() then
         -- Queue the server to be installed
