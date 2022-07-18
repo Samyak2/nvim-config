@@ -287,7 +287,7 @@ local Git = {
         self.has_changes = self.status_dict.added ~= 0 or self.status_dict.removed ~= 0 or self.status_dict.changed ~= 0
     end,
 
-    hl = { fg = colors.orange },
+    -- hl = { fg = colors.orange },
 
 
     {   -- git branch name
@@ -308,21 +308,21 @@ local Git = {
             local count = self.status_dict.added or 0
             return count > 0 and ("+" .. count)
         end,
-        hl = { fg = utils.get_highlight("DiffAdd").fg, bg = utils.get_highlight("DiffAdd").bg, },
+        hl = { fg = utils.get_highlight("DiffAdd").fg },
     },
     {
         provider = function(self)
             local count = self.status_dict.removed or 0
             return count > 0 and ("-" .. count)
         end,
-        hl = { fg = utils.get_highlight("DiffDelete").fg, bg = utils.get_highlight("DiffDelete").bg, },
+        hl = { fg = utils.get_highlight("DiffDelete").fg },
     },
     {
         provider = function(self)
             local count = self.status_dict.changed or 0
             return count > 0 and ("~" .. count)
         end,
-        hl = { fg = utils.get_highlight("DiffChange").fg, bg = utils.get_highlight("DiffChange").bg, },
+        hl = { fg = utils.get_highlight("DiffChange").fg },
     },
     {
         condition = function(self)
