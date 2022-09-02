@@ -396,7 +396,7 @@ local StatusLines = {
             }
         end
     end,
-    init = require'heirline.utils'.pick_child_on_condition,
+    fallthrough = false,
     SpecialStatusline, InactiveStatusline, DefaultStatusline,
 }
 
