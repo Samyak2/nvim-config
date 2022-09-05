@@ -43,7 +43,7 @@ return require('packer').startup(function(use)
     -- the statusline
     use {
         "rebelot/heirline.nvim",
-        requires = {'kyazdani42/nvim-web-devicons', opt = true}
+        requires = {'kyazdani42/nvim-web-devicons'}
     }
 
     -- colorschemes
