@@ -111,6 +111,12 @@ return require('packer').startup(function(use)
       }
     }
 
+    -- nice plugin to get GitHub URL from source file
+    use 'pgr0ss/vim-github-url'
+
+    -- undo tree visualization
+    use 'mbbill/undotree'
+
     -- nicer keybinds
     use 'LionC/nest.nvim'
 
