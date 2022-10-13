@@ -26,17 +26,17 @@ function ret.common_on_attach(client, bufnr)
           { "e", "<cmd>lua vim.diagnostic.open_float()<cr>" },
           { "q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>" },
       }},
-      { "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>" },
-      { "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<cr>" },
+      { "[d", "<cmd>lua vim.diagnostic.goto_prev()<cr>" },
+      { "]d", "<cmd>lua vim.diagnostic.goto_next()<cr>" },
   }
 
   -- Set some keybinds conditional on server capabilities
-  if client.resolved_capabilities.document_formatting then
+  if client.server_capabilities.document_formatting then
     nest.applyKeymaps {
         { "<space>fo", "<cmd>lua vim.lsp.buf.formatting()<cr>" }
     }
   end
-  if client.resolved_capabilities.document_range_formatting then
+  if client.server_capabilities.document_range_formatting then
     nest.applyKeymaps {
         { mode = "v", {
             { "<space>fo", "<cmd>lua vim.lsp.buf.range_formatting()<cr>" }
@@ -44,14 +44,14 @@ function ret.common_on_attach(client, bufnr)
     }
   end
 
-  -- print(vim.inspect(client.resolved_capabilities))
-  -- if client.resolved_capabilities.code_lens then
+  -- print(vim.inspect(client.server_capabilities))
+  -- if client.server_capabilities.code_lens then
   --     print("virtual types active lets goo")
   --     require'virtualtypes'.on_attach(client, bufnr)
   -- end
 
   -- Set autocommands conditional on server_capabilities
-  -- if client.resolved_capabilities.document_highlight then
+  -- if client.server_capabilities.document_highlight then
   --   vim.api.nvim_exec([[
   --     hi LspReferenceRead cterm=bold ctermbg=red guibg=LightYellow
   --     hi LspReferenceText cterm=bold ctermbg=red guibg=LightYellow
