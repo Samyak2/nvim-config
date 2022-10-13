@@ -33,7 +33,7 @@ function ret.common_on_attach(client, bufnr)
   -- Set some keybinds conditional on server capabilities
   if client.server_capabilities.document_formatting then
     nest.applyKeymaps {
-        { "<space>fo", "<cmd>lua vim.lsp.buf.formatting()<cr>" }
+        { "<space>fo", "<cmd>lua vim.lsp.buf.format { async = true }<cr>" }
     }
   end
   if client.server_capabilities.document_range_formatting then
