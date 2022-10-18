@@ -47,6 +47,7 @@ require('gitsigns_conf')
 require('nvim_tree_conf')
 require('neovide_conf')
 require('vimwiki_conf')
+require("leap_conf")
 require("statusline")
 vim.cmd('source ' .. vim.fn.stdpath("config") .. '/vimscript/legacy.vim')
 

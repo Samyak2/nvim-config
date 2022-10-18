@@ -103,6 +103,9 @@ return require('packer').startup(function(use)
         requires = {{'nvim-telescope/telescope.nvim'}}
     }
 
+    -- speeed
+    use 'ggandor/leap.nvim'
+
     -- git signs - show changed lines in gutter, etc.
     use {
       'lewis6991/gitsigns.nvim',
