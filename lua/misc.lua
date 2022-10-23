@@ -1,6 +1,8 @@
 -- show line numbers
 vim.o.number = true
+vim.o.relativenumber = true
 vim.wo.number = true
+vim.wo.relativenumber = true
 
 -- the correct way to split
 vim.o.splitright = true
