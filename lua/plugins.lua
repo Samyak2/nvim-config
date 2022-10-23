@@ -8,6 +8,8 @@ return require('packer').startup(function(use)
     -- for lsp in statusline
     use 'nvim-lua/lsp-status.nvim'
 
+    use 'tamago324/nlsp-settings.nvim'
+
     -- completion
     use 'hrsh7th/cmp-nvim-lsp'
     use 'hrsh7th/cmp-nvim-lsp-document-symbol'
