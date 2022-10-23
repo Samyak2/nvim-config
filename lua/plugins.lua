@@ -43,9 +43,13 @@ return require('packer').startup(function(use)
     use 'mattn/emmet-vim'
 
     -- the statusline
+    -- use {
+    --     "rebelot/heirline.nvim",
+    --     requires = {'kyazdani42/nvim-web-devicons'}
+    -- }
     use {
-        "rebelot/heirline.nvim",
-        requires = {'kyazdani42/nvim-web-devicons'}
+      'nvim-lualine/lualine.nvim',
+      requires = { 'kyazdani42/nvim-web-devicons', opt = true }
     }
 
     -- colorschemes
@@ -54,12 +58,12 @@ return require('packer').startup(function(use)
     -- use 'axvr/photon.vim'
     -- use 'danilo-augusto/vim-afterglow'
     -- use "rafamadriz/neon"
-    use {
-        "rebelot/kanagawa.nvim",
-        config = function()
-            vim.cmd("colorscheme kanagawa")
-        end
-    }
+    -- use {
+    --     "rebelot/kanagawa.nvim",
+    --     config = function()
+    --         vim.cmd("colorscheme kanagawa")
+    --     end
+    -- }
     -- use {
     --     "glepnir/zephyr-nvim",
     --     config = function()
@@ -80,6 +84,30 @@ return require('packer').startup(function(use)
     --         vim.cmd("colorscheme rose-pine")
     --     end
     -- }
+    -- use {
+    --     'PyGamer0/darc.nvim',
+    --     requires = {'rktjmp/lush.nvim'},
+    --     config = function()
+    --         vim.cmd("colorscheme darc")
+    --     end
+    -- }
+    -- use {
+    --     'Scysta/pink-panic.nvim',
+    --     requires = {'rktjmp/lush.nvim'},
+    --     config = function()
+    --         vim.cmd("set background=light")
+    --         vim.cmd("colorscheme pink-panic")
+    --     end
+    -- }
+    use {
+        'mcchrish/zenbones.nvim',
+        requires = {'rktjmp/lush.nvim'},
+        config = function()
+            vim.cmd("set termguicolors")
+            vim.cmd("set background=dark")
+            vim.cmd("colorscheme forestbones")
+        end
+    }
 
     -- file tree
     use {
