@@ -1,18 +1,9 @@
 -- lsp-installer begin
 local lsp_installer = require("nvim-lsp-installer")
-local nlspsettings = require("nlspsettings")
-
-nlspsettings.setup({
-  config_home = vim.fn.stdpath('config') .. '/nlsp-settings',
-  local_settings_dir = ".nlsp-settings",
-  local_settings_root_markers_fallback = { '.git' },
-  append_default_schemas = true,
-  loader = 'json'
-})
 
 -- Register a handler that will be called for all installed servers.
 lsp_installer.on_server_ready(function(server)
-    local opts = vim.tbl_deep_extend("force", require("lsp").common_opts, {})
+    local opts = vim.tbl_deep_extend("force", require("lsp").common_opts(), {})
 
     -- ignore the ones that are setup manually later, with more options and stuff
     if server.name == "efm" or server.name == "sumneko_lua" or server.name == "gopls" or server.name == "rust_analyzer" then

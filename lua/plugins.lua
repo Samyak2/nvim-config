@@ -3,44 +3,139 @@ return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
 
     -- LSP stuff
-    use 'neovim/nvim-lspconfig'
-    use 'williamboman/nvim-lsp-installer'
+    use {
+        'neovim/nvim-lspconfig',
+        event = 'BufRead',
+        requires = {
+            {
+                -- WARN: Unfortunately we won't be able to lazy load this
+                'hrsh7th/cmp-nvim-lsp',
+            },
+            {
+                'williamboman/nvim-lsp-installer',
+            }
+        },
+        config = function()
+            require("lsps")
+        end
+    }
     -- for lsp in statusline
-    use 'nvim-lua/lsp-status.nvim'
+    use {
+        'nvim-lua/lsp-status.nvim',
+        after = "nvim-lspconfig",
+    }
 
-    use 'tamago324/nlsp-settings.nvim'
+    use {
+        'tamago324/nlsp-settings.nvim',
+        after = "nvim-lspconfig",
+        config = function()
+            local nlspsettings = require("nlspsettings")
+
+            nlspsettings.setup({
+                config_home = vim.fn.stdpath('config') .. '/nlsp-settings',
+                local_settings_dir = ".nlsp-settings",
+                local_settings_root_markers_fallback = { '.git' },
+                append_default_schemas = true,
+                loader = 'json'
+            })
+        end
+    }
 
     -- completion
-    use 'hrsh7th/cmp-nvim-lsp'
-    use 'hrsh7th/cmp-nvim-lsp-document-symbol'
-    use 'hrsh7th/cmp-buffer'
-    use 'hrsh7th/cmp-path'
-    use 'hrsh7th/cmp-cmdline'
-    use 'hrsh7th/nvim-cmp'
-    use {'petertriho/cmp-git', requires = 'nvim-lua/plenary.nvim'}
-    use 'davidsierradz/cmp-conventionalcommits'
-    use 'andersevenrud/cmp-tmux'
-    use 'onsails/lspkind.nvim'
-    -- snippets
-    use 'rafamadriz/friendly-snippets'
-    use 'hrsh7th/cmp-vsnip'
-    use 'hrsh7th/vim-vsnip'
+    use {
+        {
+            'hrsh7th/nvim-cmp',
+            event = 'InsertEnter',
+            config = function()
+                require("cmp_conf")
+            end,
+            requires = {
+                -- snippets
+                {
+                    'rafamadriz/friendly-snippets',
+                    event = 'CursorHold',
+                },
+                {
+                    'hrsh7th/vim-vsnip',
+                    event = 'InsertEnter',
+                },
+                {
+                    'onsails/lspkind.nvim',
+                    after = "nvim-lspconfig",
+                }
+            }
+        },
+        {
+            'hrsh7th/cmp-vsnip',
+            after = "nvim-cmp",
+        },
+        {
+            'hrsh7th/cmp-buffer',
+            after = "nvim-cmp",
+        },
+        {
+            'hrsh7th/cmp-path',
+            after = "nvim-cmp",
+        },
+        {
+            'hrsh7th/cmp-cmdline',
+            after = "nvim-cmp",
+        },
+        {
+            'davidsierradz/cmp-conventionalcommits',
+            after = "nvim-cmp",
+        },
+        {
+            'andersevenrud/cmp-tmux',
+            after = "nvim-cmp",
+        },
+        {
+            'petertriho/cmp-git',
+            requires = 'nvim-lua/plenary.nvim',
+            after = "nvim-cmp",
+            config = function()
+                require("cmp_git").setup {
+                    filetypes = { "gitcommit", "octo", "markdown" },
+                }
+            end
+        },
+        {
+            'hrsh7th/cmp-nvim-lsp-document-symbol',
+            after = "nvim-cmp",
+        },
+    }
 
     -- ast and stuff - gives highlighting
     use {
         'nvim-treesitter/nvim-treesitter',
-        run = ':TSUpdate'
+        run = ':TSUpdate',
+        event = 'CursorHold',
+        config = function()
+            require('treesitter_conf')
+        end
     }
-    use 'nvim-treesitter/playground'
+    use {
+        'nvim-treesitter/playground',
+        after = 'nvim-treesitter'
+    }
 
     -- must have for comments
-    use 'tpope/vim-commentary'
+    use {
+        'tpope/vim-commentary',
+        event = "BufRead",
+    }
 
     -- must have for quotes, brackets, etc.
-    use 'tpope/vim-surround'
+    use {
+        'tpope/vim-surround',
+        event = "BufRead",
+    }
 
     -- must have for html
-    use 'mattn/emmet-vim'
+    use {
+        'mattn/emmet-vim',
+        ft = { "html" }
+    }
 
     -- the statusline
     -- use {
@@ -48,8 +143,8 @@ return require('packer').startup(function(use)
     --     requires = {'kyazdani42/nvim-web-devicons'}
     -- }
     use {
-      'nvim-lualine/lualine.nvim',
-      requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+        'nvim-lualine/lualine.nvim',
+        requires = { 'kyazdani42/nvim-web-devicons', opt = true }
     }
 
     -- colorschemes
@@ -101,10 +196,8 @@ return require('packer').startup(function(use)
     -- }
     use {
         'mcchrish/zenbones.nvim',
-        requires = {'rktjmp/lush.nvim'},
+        requires = { 'rktjmp/lush.nvim' },
         config = function()
-            vim.cmd("set termguicolors")
-            vim.cmd("set background=dark")
             vim.cmd("colorscheme forestbones")
         end
     }
@@ -112,43 +205,73 @@ return require('packer').startup(function(use)
     -- file tree
     use {
         'kyazdani42/nvim-tree.lua',
-        requires = {'kyazdani42/nvim-web-devicons'},
+        requires = { 'kyazdani42/nvim-web-devicons' },
+        config = function()
+            require('nvim_tree_conf')
+        end
     }
 
     -- markdown previews
     use {
         'iamcco/markdown-preview.nvim',
-        ft = {'markdown'},
-        cmd = {'MarkdownPreview', 'MarkdownPreviewStop', 'MarkdownPreviewToggle'},
+        ft = { 'markdown' },
+        cmd = { 'MarkdownPreview', 'MarkdownPreviewStop', 'MarkdownPreviewToggle' },
         config = "vim.call('mkdp#util#install')"
     }
 
     -- fuzzy finder and more
     use {
-        'nvim-telescope/telescope.nvim',
-        requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
-    }
-    use {
-        'nvim-telescope/telescope-fzy-native.nvim',
-        requires = {{'nvim-telescope/telescope.nvim'}}
+        {
+            'nvim-telescope/telescope.nvim',
+            requires = {
+                { 'nvim-lua/popup.nvim' },
+                { 'nvim-lua/plenary.nvim' },
+            },
+            config = function()
+                require('telescope_conf')
+            end
+        },
+        {
+            'nvim-telescope/telescope-fzy-native.nvim',
+            after = 'telescope.nvim',
+            config = function()
+                require('telescope').load_extension('fzy_native')
+            end
+        }
     }
 
     -- speeed
-    use 'ggandor/leap.nvim'
+    use {
+        'ggandor/leap.nvim',
+        event = "BufRead",
+        config = function()
+            require("leap_conf")
+        end
+    }
 
     -- git signs - show changed lines in gutter, etc.
     use {
-      'lewis6991/gitsigns.nvim',
-      requires = {
-        'nvim-lua/plenary.nvim'
-      }
+        'lewis6991/gitsigns.nvim',
+        requires = {
+            'nvim-lua/plenary.nvim'
+        },
+        event = 'BufRead',
+        config = function()
+            require('gitsigns_conf')
+        end
     }
 
     -- nice plugin to get GitHub URL from source file
-    use 'pgr0ss/vim-github-url'
+    use {
+        'pgr0ss/vim-github-url',
+        cmd = { "GitHubURL", "GitHubURLRepo", "GitHubURLBlob", "GitHubURLBlame" },
+    }
 
     -- undo tree visualization
-    use 'mbbill/undotree'
+    use {
+        'mbbill/undotree',
+        cmd = { "UndotreeToggle" },
+    }
 
     -- nicer keybinds
     use 'LionC/nest.nvim'
@@ -157,13 +280,16 @@ return require('packer').startup(function(use)
     use {
         'simrat39/rust-tools.nvim',
         requires = {
-          'nvim-lua/plenary.nvim',
-          'mfussenegger/nvim-dap'
-        }
+            'nvim-lua/plenary.nvim',
+            'mfussenegger/nvim-dap'
+        },
     }
 
     -- vimwiki!
-    use { 'vimwiki/vimwiki', branch='dev' }
+    use {
+        'vimwiki/vimwiki',
+        branch = 'dev'
+    }
 
     -- session manager
     use {

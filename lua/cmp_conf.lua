@@ -86,8 +86,4 @@ cmp.setup.cmdline(':', {
     })
 })
 
-require("cmp_git").setup {
-    filetypes = { "gitcommit", "octo", "markdown" },
-}
-
 -- Setup lspconfig: check `lua/lsps.lua`

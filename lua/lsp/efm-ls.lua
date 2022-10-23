@@ -92,7 +92,7 @@ local server_available, requested_server = lsp_installer_servers.get_server("efm
 
 if server_available then
     requested_server:on_ready(function()
-        local opts = vim.tbl_deep_extend("force", require("lsp").common_opts, {
+        local opts = vim.tbl_deep_extend("force", require("lsp").common_opts(), {
             -- cmd = {vim.fn.stdpath('data') .. "/lspinstall/efm/efm-langserver"},
             -- init_options = {initializationOptions},
             init_options = {documentFormatting = true, codeAction = true},

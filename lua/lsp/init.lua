@@ -65,9 +65,11 @@ function ret.common_on_attach(client, bufnr)
   -- end
 end
 
-ret.common_opts = {
-    capabilities = require('cmp_nvim_lsp').default_capabilities(),
-    on_attach = ret.common_on_attach,
-}
+ret.common_opts = function()
+    return {
+        capabilities = require('cmp_nvim_lsp').default_capabilities(),
+        on_attach = ret.common_on_attach,
+    }
+end
 
 return ret

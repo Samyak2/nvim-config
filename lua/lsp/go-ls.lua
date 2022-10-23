@@ -4,7 +4,7 @@ local server_available, requested_server = lsp_installer_servers.get_server("gop
 
 if server_available then
     requested_server:on_ready(function()
-        local opts = vim.tbl_deep_extend("force", require("lsp").common_opts, {
+        local opts = vim.tbl_deep_extend("force", require("lsp").common_opts(), {
             settings = {
                 gopls = {
                     analyses = {unusedparams = true, fieldalignment = true, nilness = true},
