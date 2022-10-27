@@ -197,7 +197,8 @@ return require('packer').startup(function(use)
         'mcchrish/zenbones.nvim',
         requires = { 'rktjmp/lush.nvim' },
         config = function()
-            vim.cmd("colorscheme forestbones")
+            -- vim.cmd("colorscheme forestbones")
+            vim.cmd("colorscheme tokyobones")
         end
     }
 
