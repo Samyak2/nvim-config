@@ -61,7 +61,6 @@ return require('packer').startup(function(use)
                 },
                 {
                     'onsails/lspkind.nvim',
-                    after = "nvim-lspconfig",
                 }
             }
         },
