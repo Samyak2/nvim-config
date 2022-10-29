@@ -5,7 +5,6 @@ return require('packer').startup(function(use)
     -- LSP stuff
     use {
         'neovim/nvim-lspconfig',
-        event = 'BufRead',
         requires = {
             {
                 -- WARN: Unfortunately we won't be able to lazy load this
@@ -45,7 +44,6 @@ return require('packer').startup(function(use)
     use {
         {
             'hrsh7th/nvim-cmp',
-            event = 'InsertEnter',
             config = function()
                 require("cmp_conf")
             end,
@@ -53,11 +51,9 @@ return require('packer').startup(function(use)
                 -- snippets
                 {
                     'rafamadriz/friendly-snippets',
-                    event = 'CursorHold',
                 },
                 {
                     'hrsh7th/vim-vsnip',
-                    event = 'InsertEnter',
                 },
                 {
                     'onsails/lspkind.nvim',
@@ -120,13 +116,11 @@ return require('packer').startup(function(use)
     -- must have for comments
     use {
         'tpope/vim-commentary',
-        event = "BufRead",
     }
 
     -- must have for quotes, brackets, etc.
     use {
         'tpope/vim-surround',
-        event = "BufRead",
     }
 
     -- must have for html
@@ -242,7 +236,6 @@ return require('packer').startup(function(use)
     -- speeed
     use {
         'ggandor/leap.nvim',
-        event = "BufRead",
         config = function()
             require("leap_conf")
         end
@@ -254,7 +247,6 @@ return require('packer').startup(function(use)
         requires = {
             'nvim-lua/plenary.nvim'
         },
-        event = 'BufRead',
         config = function()
             require('gitsigns_conf')
         end
