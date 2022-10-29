@@ -1,8 +1,6 @@
 -- Stolen from: https://github.com/ChristianChiarulli/LunarVim/blob/master/lua/lsp/efm-general-ls.lua
 -- Example configuations here: https://github.com/mattn/efm-langserver
 
-local lspconfig = require'lspconfig'
-
 -- python
 local python_arguments = {}
 
@@ -89,8 +87,6 @@ if tsserver_linter == 'eslint' then table.insert(tsserver_args, eslint) end
 
 local markdownPandocFormat = {formatCommand = 'pandoc -f markdown -t gfm -sp --tab-stop=2', formatStdin = true}
 
-requested_server = lspconfig["efm"]
-
 local opts = vim.tbl_deep_extend("force", require("lsp").common_opts(), {
     -- cmd = {vim.fn.stdpath('data') .. "/lspinstall/efm/efm-langserver"},
     -- init_options = {initializationOptions},
@@ -120,7 +116,7 @@ local opts = vim.tbl_deep_extend("force", require("lsp").common_opts(), {
         "json", "yaml", "markdown", "vue"
     },
 })
-requested_server:setup(opts)
+require'lspconfig'["efm"]:setup(opts)
 
 -- Also find way to toggle format on save
 -- maybe this will help: https://superuser.com/questions/439078/how-to-disable-autocmd-or-augroup-in-vim
