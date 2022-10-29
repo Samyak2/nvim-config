@@ -6,7 +6,12 @@ lsp_installer.on_server_ready(function(server)
     local opts = vim.tbl_deep_extend("force", require("lsp").common_opts(), {})
 
     -- ignore the ones that are setup manually later, with more options and stuff
-    if server.name == "efm" or server.name == "sumneko_lua" or server.name == "gopls" or server.name == "rust_analyzer" then
+    if server.name == "efm" or server.name == "sumneko_lua" or server.name == "gopls" then
+        return
+    end
+
+    if server.name == "rust_analyzer" then
+        require('lsp.rust-ls')
         return
     end
 
@@ -19,6 +24,4 @@ end)
 
 require('lsp.lua-ls')
 require('lsp.go-ls')
-require('lsp.rust-ls')
 require('lsp.efm-ls')
-
