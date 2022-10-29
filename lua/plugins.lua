@@ -292,6 +292,12 @@ return require('packer').startup(function(use)
 
     -- session manager
     use {
-        'rmagatti/auto-session'
+        'rmagatti/auto-session',
+        config = function()
+            require("auto-session").setup {
+                log_level = "error",
+                auto_session_suppress_dirs = { "~/", "~/Projects", "~/Downloads", "/"},
+            }
+        end
     }
 end)
