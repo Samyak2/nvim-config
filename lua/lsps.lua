@@ -1,27 +1,21 @@
 -- lsp-installer begin
 local lsp_installer = require("nvim-lsp-installer")
+local lspconfig = require'lspconfig'
 
--- Register a handler that will be called for all installed servers.
-lsp_installer.on_server_ready(function(server)
-    local opts = vim.tbl_deep_extend("force", require("lsp").common_opts(), {})
+lsp_installer.setup {}
 
-    -- ignore the ones that are setup manually later, with more options and stuff
-    if server.name == "efm" or server.name == "sumneko_lua" or server.name == "gopls" then
-        return
-    end
 
-    if server.name == "rust_analyzer" then
+for _, server in ipairs(lsp_installer.get_installed_servers()) do
+    if server.name == "efm" then
+        require('lsp.efm-ls')
+    elseif server.name == "sumneko_lua" then
+        require('lsp.lua-ls')
+    elseif server.name == "gopls" then
+        require('lsp.go-ls')
+    elseif server.name == "rust_analyzer" then
         require('lsp.rust-ls')
-        return
+    else
+        local opts = vim.tbl_deep_extend("force", require("lsp").common_opts(), {})
+        lspconfig[server.name].setup(opts)
     end
-
-    -- This setup() function is exactly the same as lspconfig's setup function.
-    -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
-    server:setup(opts)
-end)
-
--- lsp-installer end
-
-require('lsp.lua-ls')
-require('lsp.go-ls')
-require('lsp.efm-ls')
+end
