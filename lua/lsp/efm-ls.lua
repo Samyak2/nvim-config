@@ -116,7 +116,7 @@ local opts = vim.tbl_deep_extend("force", require("lsp").common_opts(), {
         "json", "yaml", "markdown", "vue"
     },
 })
-require'lspconfig'["efm"]:setup(opts)
+require'lspconfig'["efm"].setup(opts)
 
 -- Also find way to toggle format on save
 -- maybe this will help: https://superuser.com/questions/439078/how-to-disable-autocmd-or-augroup-in-vim

@@ -40,4 +40,4 @@ local opts = vim.tbl_deep_extend("force", require("lsp").common_opts(), {
         }
     },
 })
-require'lspconfig'["sumneko_lua"]:setup(opts)
+require'lspconfig'["sumneko_lua"].setup(opts)
