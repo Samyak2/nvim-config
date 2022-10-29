@@ -18,7 +18,8 @@ local extension_path = '~/.vscode-server/extensions/vadimcn.vscode-lldb-1.8.1'
 local codelldb_path = extension_path .. 'adapter/codelldb'
 local liblldb_path = extension_path .. 'lldb/lib/liblldb.so'
 
-local opts = vim.tbl_deep_extend("force", require("lsp").common_opts(), {
+local rust_opts = {
+    server = require("lsp").common_opts(),
     autoSetHints = true,
     dap = {
         adapter = require('rust-tools.dap').get_codelldb_adapter(codelldb_path, liblldb_path)
@@ -29,6 +30,6 @@ local opts = vim.tbl_deep_extend("force", require("lsp").common_opts(), {
     debuggables = {
         use_telescope = true
     },
-})
+}
 
-require("rust-tools").setup(opts)
+require("rust-tools").setup(rust_opts)

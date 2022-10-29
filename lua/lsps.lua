@@ -4,7 +4,6 @@ local lspconfig = require'lspconfig'
 
 lsp_installer.setup {}
 
-
 for _, server in ipairs(lsp_installer.get_installed_servers()) do
     if server.name == "efm" then
         require('lsp.efm-ls')
