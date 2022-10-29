@@ -17,6 +17,7 @@ nest.applyKeymaps {
             { "z", "<cmd>Telescope spell_suggest<cr>" },
             { "c", "<cmd>Telescope current_buffer_fuzzy_find<cr>" },
             { "r", "<cmd>Telescope resume<cr>" },
+            { "d", "<cmd>Telescope diagnostics<cr>" },
         }},
     }}
 }
