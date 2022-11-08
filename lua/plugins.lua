@@ -12,6 +12,9 @@ return require('packer').startup(function(use)
             },
             {
                 'williamboman/nvim-lsp-installer',
+            },
+            {
+                'tamago324/nlsp-settings.nvim',
             }
         },
         config = function()
@@ -22,22 +25,6 @@ return require('packer').startup(function(use)
     use {
         'nvim-lua/lsp-status.nvim',
         after = "nvim-lspconfig",
-    }
-
-    use {
-        'tamago324/nlsp-settings.nvim',
-        after = "nvim-lspconfig",
-        config = function()
-            local nlspsettings = require("nlspsettings")
-
-            nlspsettings.setup({
-                config_home = vim.fn.stdpath('config') .. '/nlsp-settings',
-                local_settings_dir = ".nlsp-settings",
-                local_settings_root_markers_fallback = { '.git' },
-                append_default_schemas = true,
-                loader = 'json'
-            })
-        end
     }
 
     -- completion
