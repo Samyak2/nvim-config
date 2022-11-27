@@ -263,6 +263,13 @@ return require('packer').startup(function(use)
         },
     }
 
+    -- nicer S-expr editing. lisp ftw.
+    use {
+        'eraserhd/parinfer-rust',
+        cmd = 'ParinferOn',
+        run = 'if [ -x "$(command -v cargo)" ]; then; cargo build --release; fi',
+    }
+
     -- vimwiki!
     use {
         'vimwiki/vimwiki',
