@@ -69,13 +69,23 @@ local eslint = {
     formatStdin = true
 }
 
+local eslint_d = {
+    lintCommand = "eslint_d --cache -f unix --stdin --stdin-filename ${INPUT}",
+    lintIgnoreExitCode = true,
+    lintStdin = true,
+    lintFormats = {"%f:%l:%c: %m"},
+    -- formatCommand = "eslint_d --fix-to-stdout --stdin --stdin-filename=${INPUT}",
+    -- formatStdin = true
+}
+
 local tsserver_args = {}
 
 local tsserver_formatter = 'prettier'
 if tsserver_formatter == 'prettier' then table.insert(tsserver_args, prettier) end
 
-local tsserver_linter = 'eslint'
+local tsserver_linter = 'eslint_d'
 if tsserver_linter == 'eslint' then table.insert(tsserver_args, eslint) end
+if tsserver_linter == 'eslint_d' then table.insert(tsserver_args, eslint_d) end
 
 -- local markdownlint = {
 --     -- TODO default to global lintrc
