@@ -11,7 +11,11 @@ return require('packer').startup(function(use)
                 'hrsh7th/cmp-nvim-lsp',
             },
             {
-                'williamboman/nvim-lsp-installer',
+                'williamboman/mason.nvim',
+                run = ':MasonUpdate' -- :MasonUpdate updates registry contents
+            },
+            {
+                'williamboman/mason-lspconfig.nvim',
             },
             {
                 'tamago324/nlsp-settings.nvim',
