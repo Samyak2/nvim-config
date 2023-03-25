@@ -113,7 +113,7 @@ return require('packer').startup(function(use)
     -- must have for html
     use {
         'mattn/emmet-vim',
-        ft = { "html" }
+        ft = { "html", "svelte" }
     }
 
     -- the statusline
