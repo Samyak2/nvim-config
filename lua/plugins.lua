@@ -31,6 +31,9 @@ return require('packer').startup(function(use)
         after = "nvim-lspconfig",
     }
 
+    -- schemas in json/yaml
+    use "b0o/schemastore.nvim"
+
     -- completion
     use {
         {

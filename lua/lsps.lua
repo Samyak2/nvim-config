@@ -33,4 +33,23 @@ require("mason-lspconfig").setup_handlers {
     ["rust_analyzer"] = function ()
           require('lsp.rust-ls')
     end,
+    ["yamlls"] = function ()
+        require('lspconfig').yamlls.setup {
+          settings = {
+            yaml = {
+              schemas = require('schemastore').yaml.schemas(),
+            },
+          },
+        }
+    end,
+    ["jsonls"] = function ()
+        require('lspconfig').jsonls.setup {
+          settings = {
+            json = {
+              schemas = require('schemastore').json.schemas(),
+              validate = { enable = true },
+            },
+          },
+        }
+    end,
 }
