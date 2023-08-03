@@ -180,12 +180,24 @@ return require('packer').startup(function(use)
     --         vim.cmd("colorscheme pink-panic")
     --     end
     -- }
+    -- use {
+    --     'mcchrish/zenbones.nvim',
+    --     requires = { 'rktjmp/lush.nvim' },
+    --     config = function()
+    --         -- vim.cmd("colorscheme forestbones")
+    --         vim.cmd("colorscheme tokyobones")
+    --     end
+    -- }
+    -- use {
+    --     'nyoom-engineering/oxocarbon.nvim',
+    --     config = function ()
+    --         vim.cmd("colorscheme oxocarbon")
+    --     end
+    -- }
     use {
-        'mcchrish/zenbones.nvim',
-        requires = { 'rktjmp/lush.nvim' },
-        config = function()
-            -- vim.cmd("colorscheme forestbones")
-            vim.cmd("colorscheme tokyobones")
+        'AlexvZyl/nordic.nvim',
+        config = function ()
+            vim.cmd("colorscheme nordic")
         end
     }
 
