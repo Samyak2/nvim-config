@@ -1,5 +1,10 @@
 require('mason_conf')
 
+-- IMPORTANT: make sure to setup neodev BEFORE lspconfig
+require("neodev").setup({
+  -- add any options here, or leave empty to use the default settings
+})
+
 local lspconfig = require'lspconfig'
 
 local nlspsettings = require("nlspsettings")
@@ -22,7 +27,7 @@ require("mason-lspconfig").setup_handlers {
     end,
     -- Next, you can provide a dedicated handler for specific servers.
     ["efm"] = function ()
-         require('lsp.efm-ls')
+         require('lsp.efmls')
     end,
     ["lua_ls"] = function ()
          require('lsp.lua-ls')

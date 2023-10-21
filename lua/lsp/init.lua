@@ -1,6 +1,20 @@
 local nest = require('nest')
 local ret = {}
 
+function _G.custom_format()
+    return vim.lsp.buf.format {
+        async = true,
+        filter = function (client)
+            local filetype = vim.bo.filetype
+            if require('lsp.efm-languages').languages[filetype] then
+                print(require('lsp.efm-languages').languages[filetype], client.name, client.name == 'efm')
+                return client.name == 'efm'
+            end
+            return true
+        end
+    }
+end
+
 function ret.common_on_attach(client, bufnr)
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
@@ -33,13 +47,13 @@ function ret.common_on_attach(client, bufnr)
   -- Set some keybinds conditional on server capabilities
   if vim.lsp.protocol.resolve_capabilities(client.server_capabilities).documentFormattingProvider then
     nest.applyKeymaps {
-        { "<space>fo", "<cmd>lua vim.lsp.buf.format { async = true }<cr>" }
+        { "<space>fo", "<cmd>lua custom_format()<cr>" }
     }
   end
   if vim.lsp.protocol.resolve_capabilities(client.server_capabilities).documentRangeFormattingProvider then
     nest.applyKeymaps {
         { mode = "v", {
-            { "<space>fo", "<cmd>lua vim.lsp.buf.range_formatting()<cr>" }
+            { "<space>fo", "<cmd>lua custom_format()<cr>" }
         }},
     }
   end
