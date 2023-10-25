@@ -5,6 +5,7 @@ require('telescope').setup {
     defaults = {
         -- use fzy native sorter for spid
         file_sorter = require('telescope.sorters').get_fzy_sorter,
+        layout_strategy = "vertical",
     },
     extensions = {
         fzy_native = {

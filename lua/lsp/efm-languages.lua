@@ -1,5 +1,7 @@
 local ret = {}
 
+local fs = require('efmls-configs.fs')
+
 -- Register linters and formatters per language
 -- local eslint = require('efmls-configs.linters.eslint')
 -- local prettier = require('efmls-configs.formatters.prettier')
@@ -20,6 +22,20 @@ ret.languages = vim.tbl_extend('force', languages, {
   },
   typescriptreact = {
     require('efmls-configs.formatters.prettier'),
+  },
+  python = {
+      require('efmls-configs.formatters.black'),
+      {
+        formatCommand = string.format('%s --profile black --quiet -', fs.executable('isort')),
+        formatStdin = true,
+        rootMarkers = {
+          '.isort.cfg',
+          'pyproject.toml',
+          'setup.cfg',
+          'setup.py',
+        },
+      },
+      require('efmls-configs.linters.flake8'),
   },
 })
 

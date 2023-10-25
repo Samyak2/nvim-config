@@ -7,7 +7,6 @@ function _G.custom_format()
         filter = function (client)
             local filetype = vim.bo.filetype
             if require('lsp.efm-languages').languages[filetype] then
-                print(require('lsp.efm-languages').languages[filetype], client.name, client.name == 'efm')
                 return client.name == 'efm'
             end
             return true
