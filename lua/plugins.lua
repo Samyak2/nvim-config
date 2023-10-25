@@ -200,10 +200,16 @@ return require('packer').startup(function(use)
     --         vim.cmd("colorscheme oxocarbon")
     --     end
     -- }
+    -- use {
+    --     'AlexvZyl/nordic.nvim',
+    --     config = function ()
+    --         vim.cmd("colorscheme nordic")
+    --     end
+    -- }
     use {
-        'AlexvZyl/nordic.nvim',
-        config = function ()
-            vim.cmd("colorscheme nordic")
+        'bluz71/vim-nightfly-colors',
+        config = function()
+            vim.cmd("colorscheme nightfly")
         end
     }
 
