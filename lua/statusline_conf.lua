@@ -17,11 +17,27 @@ require('lsp-progress').setup {
     ---     one of the `series_messages` array, or ignored if return nil.
     series_format = function(title, message, percentage, done)
         local builder = {}
+        local has_percent = false
+        local has_done = false
         if percentage then
             table.insert(builder, string.format("%.0f%%%%", percentage))
+            has_percent = true
         end
-        if done then
+        if done and not has_percent then
             table.insert(builder, "done")
+            has_done = true
+        end
+        if not (has_percent or has_done) then
+            local has_title = false
+            if type(title) == "string" and string.len(title) > 0 then
+                local escaped_title = title:gsub("%%", "%%%%")
+                table.insert(builder, escaped_title)
+                has_title = true
+            end
+            if not has_title and (type(message) == "string" and string.len(message) > 0) then
+                local escaped_message = message:gsub("%%", "%%%%")
+                table.insert(builder, escaped_message)
+            end
         end
         return table.concat(builder, " ")
     end,
