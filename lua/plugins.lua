@@ -129,6 +129,11 @@ return require('packer').startup(function(use)
         ft = { "html", "svelte" }
     }
 
+    use {
+      'linrongbin16/lsp-progress.nvim',
+      requires = { 'kyazdani42/nvim-web-devicons' }
+    }
+
     -- the statusline
     -- use {
     --     "rebelot/heirline.nvim",
