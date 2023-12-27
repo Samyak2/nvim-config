@@ -37,7 +37,6 @@ function ret.common_on_attach(client, bufnr)
           { "rn", "<cmd>lua vim.lsp.buf.rename()<cr>" },
           { "ca", "<cmd>lua vim.lsp.buf.code_action()<cr>" },
           { "e", "<cmd>lua vim.diagnostic.open_float()<cr>" },
-          { "q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>" },
       }},
       { "[d", "<cmd>lua vim.diagnostic.goto_prev()<cr>" },
       { "]d", "<cmd>lua vim.diagnostic.goto_next()<cr>" },
