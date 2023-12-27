@@ -19,7 +19,15 @@ local codelldb_path = extension_path .. 'adapter/codelldb'
 local liblldb_path = extension_path .. 'lldb/lib/liblldb.so'
 
 local rust_opts = {
-    server = require("lsp").common_opts(),
+    server = vim.tbl_deep_extend("force", require("lsp").common_opts(), {
+        settings = {
+            ["rust-analyzer"] = {
+                check = {
+                    command = "clippy"
+                }
+            }
+        }
+    }),
     autoSetHints = true,
     dap = {
         adapter = require('rust-tools.dap').get_codelldb_adapter(codelldb_path, liblldb_path)
