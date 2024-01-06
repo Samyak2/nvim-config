@@ -306,10 +306,18 @@ return require('packer').startup(function(use)
         run = 'if [ -x "$(command -v cargo)" ]; then; cargo build --release; fi',
     }
 
-    -- vimwiki!
     use {
-        'vimwiki/vimwiki',
-        branch = 'dev'
+        'glacambre/firenvim',
+        run = function() vim.fn['firenvim#install'](0) end,
+        config = function()
+            vim.g.firenvim_config = {
+                localSettings = {
+                    [".*"] = {
+                        takeover = "never"
+                    }
+                }
+            }
+        end
     }
 
     -- session manager
@@ -318,7 +326,7 @@ return require('packer').startup(function(use)
         config = function()
             require("auto-session").setup {
                 log_level = "error",
-                auto_session_suppress_dirs = { "~/", "~/Projects", "~/Downloads", "/"},
+                auto_session_suppress_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
             }
         end
     }
