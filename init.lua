@@ -44,5 +44,3 @@ require('vimwiki_conf')
 require("statusline_conf")
 vim.cmd('source ' .. vim.fn.stdpath("config") .. '/vimscript/legacy.vim')
 
-print("config loaded")
-

@@ -16,9 +16,6 @@ return require('packer').startup(function(use)
             },
             {
                 'williamboman/mason-lspconfig.nvim',
-            },
-            {
-                'tamago324/nlsp-settings.nvim',
             }
         },
         config = function()
@@ -218,6 +215,7 @@ return require('packer').startup(function(use)
         end
     }
 
+    -- file tree
     use {
         {
             'lambdalisue/fern.vim'

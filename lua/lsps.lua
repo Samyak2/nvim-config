@@ -2,16 +2,6 @@ require('mason_conf')
 
 local lspconfig = require'lspconfig'
 
-local nlspsettings = require("nlspsettings")
-
-nlspsettings.setup({
-    config_home = vim.fn.stdpath('config') .. '/nlsp-settings',
-    local_settings_dir = ".nlsp-settings",
-    local_settings_root_markers_fallback = { '.git' },
-    append_default_schemas = true,
-    loader = 'json'
-})
-
 require("mason-lspconfig").setup_handlers {
     -- The first entry (without a key) will be the default handler
     -- and will be called for each installed server that doesn't have
