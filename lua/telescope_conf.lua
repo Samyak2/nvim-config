@@ -6,6 +6,23 @@ require('telescope').setup {
         -- use fzy native sorter for spid
         file_sorter = require('telescope.sorters').get_fzy_sorter,
         layout_strategy = "vertical",
+        vimgrep_arguments = {
+          "rg",
+          "--color=never",
+          "--no-heading",
+          "--with-filename",
+          "--line-number",
+          "--column",
+          "--smart-case",
+          "--hidden",
+          "--glob=!.git/*"
+        }
+    },
+    pickers = {
+        find_files = {
+            hidden = true,
+            find_command = {'rg', '--hidden', '--files', '--glob', '!.git/*'},
+        }
     },
     extensions = {
         fzy_native = {
