@@ -5,7 +5,7 @@ nest.applyKeymaps {
     { "j", "gj" },
     { "k", "gk" },
     -- for nvim-tree.lua
-    { "<C-f>", ":NvimTreeToggle<CR>" },
+    { "<C-f>", ":Fern . -reveal=%<CR>" },
     -- telescope
     { "<leader>", {
         { "f", {

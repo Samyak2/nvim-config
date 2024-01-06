@@ -131,17 +131,17 @@ return require('packer').startup(function(use)
 
     use {
       'linrongbin16/lsp-progress.nvim',
-      requires = { 'kyazdani42/nvim-web-devicons' }
+      requires = { 'nvim-tree/nvim-web-devicons' }
     }
 
     -- the statusline
     -- use {
     --     "rebelot/heirline.nvim",
-    --     requires = {'kyazdani42/nvim-web-devicons'}
+    --     requires = {'nvim-tree/nvim-web-devicons'}
     -- }
     use {
         'nvim-lualine/lualine.nvim',
-        requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+        requires = { 'nvim-tree/nvim-web-devicons', opt = true }
     }
 
     -- colorschemes
@@ -218,13 +218,28 @@ return require('packer').startup(function(use)
         end
     }
 
-    -- file tree
     use {
-        'kyazdani42/nvim-tree.lua',
-        requires = { 'kyazdani42/nvim-web-devicons' },
-        config = function()
-            require('nvim_tree_conf')
-        end
+        {
+            'lambdalisue/fern.vim'
+        },
+
+        {
+            'lambdalisue/fern-git-status.vim',
+        },
+
+        {
+            'lambdalisue/fern-hijack.vim',
+        },
+
+        {
+            'TheLeoP/fern-renderer-web-devicons.nvim',
+            requires = {
+                { 'nvim-tree/nvim-web-devicons' }
+            },
+            config = function ()
+                vim.g["fern#renderer"] = "nvim-web-devicons"
+            end
+        }
     }
 
     -- markdown previews
