@@ -218,7 +218,10 @@ return require('packer').startup(function(use)
     -- file tree
     use {
         {
-            'lambdalisue/fern.vim'
+            'lambdalisue/fern.vim',
+            config = function ()
+                require('fern_conf')
+            end
         },
 
         {
