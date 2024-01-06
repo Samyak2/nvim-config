@@ -1,1 +1,7 @@
-plugin
+/plugin
+
+# lua lsp stuff
+/lua/.luarc.json
+
+# apple
+.DS_STORE
