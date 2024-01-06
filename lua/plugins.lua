@@ -300,9 +300,6 @@ return require('packer').startup(function(use)
         cmd = { "UndotreeToggle" },
     }
 
-    -- nicer keybinds
-    use 'LionC/nest.nvim'
-
     -- rust goodies
     use {
         'simrat39/rust-tools.nvim',

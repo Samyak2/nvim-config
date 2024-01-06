@@ -8,6 +8,7 @@ autocmd BufReadPost *
 
 " tabs and spaces for specific files
 autocmd Filetype javascript,typescript,typescriptreact,svelte setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+autocmd Filetype lua setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 autocmd Filetype cpp,c setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 autocmd Filetype go setlocal tabstop=2 shiftwidth=2 softtabstop=2 noexpandtab
 autocmd Filetype terraform setlocal tabstop=2 shiftwidth=2 softtabstop=2 noexpandtab
