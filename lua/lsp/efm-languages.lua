@@ -1,6 +1,7 @@
 local ret = {}
 
 local fs = require('efmls-configs.fs')
+local sourceText = require('efmls-configs.utils').sourceText
 
 -- Register linters and formatters per language
 -- local eslint = require('efmls-configs.linters.eslint')
@@ -23,6 +24,9 @@ ret.languages = vim.tbl_extend('force', languages, {
   typescriptreact = {
     require('efmls-configs.formatters.prettier'),
   },
+  javascript = {
+    require('efmls-configs.formatters.prettier'),
+  },
   python = {
       require('efmls-configs.formatters.black'),
       {
@@ -36,6 +40,29 @@ ret.languages = vim.tbl_extend('force', languages, {
         },
       },
       require('efmls-configs.linters.flake8'),
+  },
+  sql = {
+      {
+        prefix = 'sqlfluff',
+        lintSource = sourceText('sqlfluff'),
+        lintCommand = string.format(
+            '%s lint --format github-annotation-native --nocolor --disable-progress-bar -',
+            fs.executable('sqlfluff')
+        ),
+        lintStdin = true,
+        lintIgnoreExitCode = true,
+        lintFormats = {
+          "::%totice title=SQLFluff,file=%f,line=%l,col=%c::%m",
+          "::%tarning title=SQLFluff,file=%f,line=%l,col=%c::%m",
+          "::%trror title=SQLFluff,file=%f,line=%l,col=%c::%m",
+        },
+        rootMarkers = {
+          '.sqlfluff',
+          'pyproject.toml',
+          'setup.cfg',
+          'setup.py',
+        },
+      }
   },
 })
 
