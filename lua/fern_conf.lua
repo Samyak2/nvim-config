@@ -9,5 +9,6 @@ vim.api.nvim_create_autocmd("FileType", {
 		vim.keymap.set("n", "<C-r>", "<Plug>(fern-action-reload:all)", key_opts)
 		vim.keymap.set("n", "N", "<Plug>(fern-action-new-path)", key_opts)
 		vim.keymap.set("n", "<C-f>", "<C-o>", key_opts)
+		vim.keymap.set("n", "q", "<C-o>", key_opts)
 	end,
 })
