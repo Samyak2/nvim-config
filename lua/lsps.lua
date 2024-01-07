@@ -47,9 +47,9 @@ require("mason-lspconfig").setup_handlers({
 			},
 		})
 	end,
-	["pest_ls"] = function()
-		require("pest-vim").setup(require("lsp").common_opts())
-	end,
+	-- ["pest_ls"] = function()
+	-- 	require("pest-vim").setup(require("lsp").common_opts())
+	-- end,
 })
 
 -- require("lspconfig").pest_ls.setup {}

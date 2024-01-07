@@ -5,3 +5,7 @@
 
 # apple
 .DS_STORE
+
+# direnv
+.direnv
+.envrc

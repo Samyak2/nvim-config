@@ -7,5 +7,6 @@ vim.api.nvim_create_autocmd("FileType", {
 		local key_opts = { buffer = args.buf, remap = true }
 		vim.keymap.set("n", "<C-h>", "<Plug>(fern-action-hidden:toggle)", key_opts)
 		vim.keymap.set("n", "<C-r>", "<Plug>(fern-action-reload:all)", key_opts)
+		vim.keymap.set("n", "N", "<Plug>(fern-action-new-path)", key_opts)
 	end,
 })

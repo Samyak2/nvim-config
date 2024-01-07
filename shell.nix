@@ -3,7 +3,7 @@
 with pkgs;
 pkgs.mkShell {
   buildInputs = [
-    luajitPackages.luacheck
+    gcc
     stylua
   ];
 }
