@@ -36,7 +36,6 @@ end
 
 DATA_PATH = vim.fn.stdpath("data")
 
--- require("plugins")
 require("lazy_conf")
 require("misc")
 require("keybinds")
