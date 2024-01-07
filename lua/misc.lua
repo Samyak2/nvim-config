@@ -14,7 +14,7 @@ vim.o.scrolloff = 3
 vim.wo.scrolloff = 3
 
 -- backspace (delete) over indent, etc.
-vim.o.backspace = 'indent,eol,start'
+vim.o.backspace = "indent,eol,start"
 
 -- searching
 vim.o.hlsearch = true
@@ -23,8 +23,8 @@ vim.o.ignorecase = true
 vim.o.smartcase = true
 
 -- visualize tabs and newlines
-vim.o.listchars = 'tab:· ,trail:▸,nbsp:⎵'
-vim.wo.listchars = 'tab:· ,trail:▸,nbsp:⎵'
+vim.o.listchars = "tab:· ,trail:▸,nbsp:⎵"
+vim.wo.listchars = "tab:· ,trail:▸,nbsp:⎵"
 vim.o.list = true
 vim.wo.list = true
 
@@ -35,9 +35,9 @@ vim.bo.undofile = true
 
 -- save temporary and backup files to neovim's data dir
 -- instead of the file's current dir
-vim.o.backupdir = DATA_PATH .. '/backup'
-vim.o.directory = DATA_PATH .. '/directory'
-vim.o.undodir = DATA_PATH .. '/undo'
+vim.o.backupdir = DATA_PATH .. "/backup"
+vim.o.directory = DATA_PATH .. "/directory"
+vim.o.undodir = DATA_PATH .. "/undo"
 
 -- spaces instead of tabs
 -- (see vimscript/legacy.vim for filetype specific config)

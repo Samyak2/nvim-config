@@ -6,8 +6,8 @@ vim.g.mapleader = " "
 -- helpful function for debugging:
 -- from: https://github.com/nanotee/nvim-lua-guide#tips-2
 function _G.dump(...)
-    local objects = vim.tbl_map(vim.inspect, {...})
-    print(unpack(objects))
+	local objects = vim.tbl_map(vim.inspect, { ... })
+	print(unpack(objects))
 end
 
 -- to evaluate vim in lua
@@ -30,17 +30,16 @@ end
 -- The function is called `t` for `termcodes`.
 -- You don't have to call it that, but I find the terseness convenient
 function t(str)
-    -- Adjust boolean arguments as needed
-    return vim.api.nvim_replace_termcodes(str, true, true, true)
+	-- Adjust boolean arguments as needed
+	return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
 
-DATA_PATH = vim.fn.stdpath('data')
+DATA_PATH = vim.fn.stdpath("data")
 
 require("plugins")
 require("misc")
-require('keybinds')
-require('neovide_conf')
-require('vimwiki_conf')
+require("keybinds")
+require("neovide_conf")
+require("vimwiki_conf")
 require("statusline_conf")
-vim.cmd('source ' .. vim.fn.stdpath("config") .. '/vimscript/legacy.vim')
-
+vim.cmd("source " .. vim.fn.stdpath("config") .. "/vimscript/legacy.vim")
