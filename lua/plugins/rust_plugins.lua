@@ -5,6 +5,6 @@ return {
 			"nvim-lua/plenary.nvim",
 			"mfussenegger/nvim-dap",
 		},
-    ft = "rust"
+		ft = "rust",
 	},
 }

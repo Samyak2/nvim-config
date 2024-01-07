@@ -4,10 +4,10 @@ return {
 		config = function()
 			require("fern_conf")
 		end,
-    keys = {
-      { "<C-f>", ":Fern . -reveal=%<CR>" }
-    },
-    event = "FileType"
+		keys = {
+			{ "<C-f>", ":Fern . -reveal=%<CR>" },
+		},
+		event = "FileType",
 	},
 
 	{
@@ -16,7 +16,7 @@ return {
 
 	{
 		"lambdalisue/fern-hijack.vim",
-    lazy = false
+		lazy = false,
 	},
 
 	{
