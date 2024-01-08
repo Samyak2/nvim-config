@@ -30,6 +30,7 @@
   "neotest": { "branch": "master", "commit": "1ee3fcc150207f33dba8c9b3f478e5a0148d661d" },
   "neotest-mocha": { "branch": "main", "commit": "68f0e9768a94c3ebd4d5e67b2765e6a5df017d99" },
   "neotest-python": { "branch": "master", "commit": "86ac2bbc8a4da3f203e56d9303d6ed1d7e50c1f6" },
+  "neotest-rust": { "branch": "main", "commit": "3c06f239ad260f02c8678141e08b57d20fbe2c55" },
   "nvim-cmp": { "branch": "main", "commit": "538e37ba87284942c1d76ed38dd497e54e65b891" },
   "nvim-dap": { "branch": "master", "commit": "f0dca670fa059eb89dda8869a6310c804241345c" },
   "nvim-lspconfig": { "branch": "master", "commit": "796394fd19fb878e8dbc4fd1e9c9c186ed07a5f4" },
