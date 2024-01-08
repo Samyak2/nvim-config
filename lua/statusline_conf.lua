@@ -80,11 +80,19 @@ require("lsp-progress").setup({
 	end,
 })
 
+local function filename_oil(filename, ctx)
+	if vim.bo.filetype == "oil" then
+		return string.sub(require("oil").get_current_dir(), string.len(vim.fn.getcwd()) + 2, -1)
+	else
+		return filename
+	end
+end
+
 require("lualine").setup({
 	sections = {
 		lualine_a = { "mode" },
-		lualine_b = { "branch", "diff", "diagnostics" },
-		lualine_c = { require("lsp-progress").progress },
+		lualine_b = { "branch", "diff" },
+		lualine_c = { { "filename", fmt = filename_oil }, "diagnostics", require("lsp-progress").progress },
 		lualine_x = { "encoding" },
 		lualine_y = { "filetype" },
 		lualine_z = { "progress", "location" },
