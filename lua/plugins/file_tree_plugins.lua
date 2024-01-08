@@ -1,29 +1,16 @@
 return {
 	{
-		"lambdalisue/fern.vim",
+		"stevearc/oil.nvim",
+		opts = {},
+		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = function()
-			require("fern_conf")
+			require("oil").setup({
+				delete_to_trash = true,
+			})
 		end,
-		dependencies = {
-			{
-				"lambdalisue/fern-git-status.vim",
-			},
-			{
-				"TheLeoP/fern-renderer-web-devicons.nvim",
-				dependencies = { "nvim-tree/nvim-web-devicons" },
-				config = function()
-					vim.g["fern#renderer"] = "nvim-web-devicons"
-				end,
-			},
-		},
-		keys = {
-			{ "<C-f>", ":Fern . -reveal=%<CR>" },
-		},
-		event = "FileType",
-	},
-
-	{
-		"lambdalisue/fern-hijack.vim",
 		lazy = false,
+		keys = {
+			{ "<C-f>", "<CMD>Oil<CR>" },
+		},
 	},
 }
