@@ -40,10 +40,13 @@ vim.o.directory = DATA_PATH .. "/directory"
 vim.o.undodir = DATA_PATH .. "/undo"
 
 -- indent
+vim.o.tabstop = 4
+vim.o.softtabstop = 4
+vim.o.shiftwidth = 4
+vim.o.expandtab = true
+-- vim.o.shiftround = false
+vim.o.autoindent = true
 vim.cmd("filetype plugin indent on")
-vim.o.tabstop = 2
-vim.o.shiftwidth = 2
-vim.o.shiftround = false
 
 -- colors
 vim.o.termguicolors = true
