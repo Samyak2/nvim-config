@@ -6,7 +6,12 @@ return {
             { "gcc", mode = { "n" } },
         },
     },
-    "tpope/vim-surround",
+    {
+        "tpope/vim-surround",
+        keys = {
+            { "cs" },
+        }
+    },
     {
         "mattn/emmet-vim",
         ft = { "html", "svelte" },
