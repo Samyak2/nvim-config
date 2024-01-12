@@ -13,7 +13,9 @@ return {
         config = function()
             require("neotest").setup {
                 adapters = {
-                    require("neotest-python"),
+                    require("neotest-python") {
+                        args = { "-vvv" },
+                    },
                     require("neotest-mocha"),
                     require("neotest-rust"),
                 },
