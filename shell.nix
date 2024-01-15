@@ -5,5 +5,8 @@ pkgs.mkShell {
   buildInputs = [
     gcc
     stylua
+
+    # plugin dependencies (build time)
+    deno
   ];
 }
