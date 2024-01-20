@@ -1,8 +1,6 @@
 -- show line numbers
 vim.o.number = true
-vim.o.relativenumber = true
 vim.wo.number = true
-vim.wo.relativenumber = true
 
 -- the correct way to split
 vim.o.splitright = true
@@ -57,5 +55,5 @@ vim.wo.foldnestmax = 5
 -- treesitter folds
 vim.o.foldmethod = "expr"
 vim.o.foldexpr = "nvim_treesitter#foldexpr()"
--- close all folds by default
-vim.o.foldlevelstart = 3
+-- no folds closed by default
+vim.o.foldlevelstart = 99
