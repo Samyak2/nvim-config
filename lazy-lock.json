@@ -42,6 +42,7 @@
   "schemastore.nvim": { "branch": "main", "commit": "3872be10ce1db13d87b4dee1e260ac4936a38d8e" },
   "telescope-fzy-native.nvim": { "branch": "master", "commit": "282f069504515eec762ab6d6c89903377252bf5b" },
   "telescope.nvim": { "branch": "master", "commit": "da8b3d485975a8727bea127518b65c980521ae22" },
+  "transparent.nvim": { "branch": "main", "commit": "fd35a46f4b7c1b244249266bdcb2da3814f01724" },
   "vim-commentary": { "branch": "master", "commit": "f67e3e67ea516755005e6cccb178bc8439c6d402" },
   "vim-github-url": { "branch": "master", "commit": "48d6970a11728511e24f423d550cf6740a9371db" },
   "vim-nightfly-colors": { "branch": "master", "commit": "0c6e2e88bf15634af94a91fcc2e20e28a09dfecd" },

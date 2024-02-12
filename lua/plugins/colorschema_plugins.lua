@@ -7,4 +7,8 @@ return {
             vim.cmd("colorscheme nightfly")
         end,
     },
+    {
+        "xiyaowong/transparent.nvim",
+        lazy = false,
+    }
 }
