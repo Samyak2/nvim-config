@@ -17,6 +17,11 @@ require("telescope").setup {
             "--hidden",
             "--glob=!.git/*",
         },
+        layout_config = {
+            vertical = {
+                preview_cutoff = 0,
+            },
+        },
     },
     pickers = {
         find_files = {
