@@ -7,18 +7,17 @@ require("mason_conf")
 
 local lspconfig = require("lspconfig")
 
+local function default_lsp_handler(server_name)
+    local opts = vim.tbl_deep_extend("force", require("lsp").common_opts(), {})
+    lspconfig[server_name].setup(opts)
+end
+
 require("mason-lspconfig").setup_handlers {
     -- The first entry (without a key) will be the default handler
     -- and will be called for each installed server that doesn't have
     -- a dedicated handler.
-    function(server_name) -- default handler (optional)
-        local opts = vim.tbl_deep_extend("force", require("lsp").common_opts(), {})
-        lspconfig[server_name].setup(opts)
-    end,
+    default_lsp_handler,
     -- Next, you can provide a dedicated handler for specific servers.
-    ["lua_ls"] = function()
-        require("lsp.lua-ls")
-    end,
     ["gopls"] = function()
         require("lsp.go-ls")
     end,
@@ -60,6 +59,14 @@ end
 
 call_if_executable_exists("efm-langserver", function()
     require("lsp.efmls")
+end)
+
+call_if_executable_exists("lua-language-server", function()
+    require("lsp.lua-ls")
+end)
+
+call_if_executable_exists("nil", function()
+    default_lsp_handler("nil_ls")
 end)
 
 -- require("lspconfig").pest_ls.setup {}
