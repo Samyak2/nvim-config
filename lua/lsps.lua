@@ -16,9 +16,6 @@ require("mason-lspconfig").setup_handlers {
         lspconfig[server_name].setup(opts)
     end,
     -- Next, you can provide a dedicated handler for specific servers.
-    ["efm"] = function()
-        require("lsp.efmls")
-    end,
     ["lua_ls"] = function()
         require("lsp.lua-ls")
     end,
@@ -51,5 +48,18 @@ require("mason-lspconfig").setup_handlers {
     -- 	require("pest-vim").setup(require("lsp").common_opts())
     -- end,
 }
+
+-- this handles both cases:
+-- 1. the lsp is installed by mason
+-- 2. the lsp is installed in the system (e.g. nixos or home-manager)
+local function call_if_executable_exists(exe_name, fn)
+    if vim.fn.executable(exe_name) ~= 0 then
+        fn()
+    end
+end
+
+call_if_executable_exists("efm-langserver", function()
+    require("lsp.efmls")
+end)
 
 -- require("lspconfig").pest_ls.setup {}

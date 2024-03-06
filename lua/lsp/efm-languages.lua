@@ -66,7 +66,7 @@ ret.languages = vim.tbl_extend("force", languages, {
     },
     nix = {
         require("efmls-configs.linters.statix"),
-        require("efmls-configs.formatters.nixfmt"),
+        require("efmls-configs.formatters.alejandra"),
     },
 })
 
