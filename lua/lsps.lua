@@ -69,4 +69,8 @@ call_if_executable_exists("nil", function()
     default_lsp_handler("nil_ls")
 end)
 
+call_if_executable_exists("pyright", function()
+    default_lsp_handler("pyright")
+end)
+
 -- require("lspconfig").pest_ls.setup {}
