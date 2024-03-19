@@ -21,9 +21,6 @@ require("mason-lspconfig").setup_handlers {
     ["gopls"] = function()
         require("lsp.go-ls")
     end,
-    ["rust_analyzer"] = function()
-        require("lsp.rust-ls")
-    end,
     ["yamlls"] = function()
         require("lspconfig").yamlls.setup {
             settings = {
@@ -71,6 +68,10 @@ end)
 
 call_if_executable_exists("pyright", function()
     default_lsp_handler("pyright")
+end)
+
+call_if_executable_exists("rust-analyzer", function()
+    require("lsp.rust-ls")
 end)
 
 -- require("lspconfig").pest_ls.setup {}
