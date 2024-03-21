@@ -74,4 +74,8 @@ call_if_executable_exists("rust-analyzer", function()
     require("lsp.rust-ls")
 end)
 
+call_if_executable_exists("typescript-language-server", function ()
+    default_lsp_handler("tsserver")
+end)
+
 -- require("lspconfig").pest_ls.setup {}
