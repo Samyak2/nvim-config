@@ -78,4 +78,8 @@ call_if_executable_exists("typescript-language-server", function ()
     default_lsp_handler("tsserver")
 end)
 
+call_if_executable_exists("terraform-ls", function ()
+    default_lsp_handler("terraformls")
+end)
+
 -- require("lspconfig").pest_ls.setup {}
