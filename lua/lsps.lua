@@ -67,6 +67,20 @@ local executable_handlers = {
     ["terraform-ls"] = function()
         default_lsp_handler("terraformls")
     end,
+
+    -- these come from vscode-langservers-extracted
+    ["vscode-eslint-language-server"] = function()
+        default_lsp_handler("eslint")
+    end,
+    ["vscode-html-language-server"] = function()
+        default_lsp_handler("html")
+    end,
+    ["vscode-json-language-server"] = function()
+        default_lsp_handler("jsonls")
+    end,
+    ["vscode-css-language-server"] = function()
+        default_lsp_handler("cssls")
+    end,
 }
 
 -- this handles both cases:
