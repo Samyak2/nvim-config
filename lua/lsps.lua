@@ -45,41 +45,37 @@ require("mason-lspconfig").setup_handlers {
     -- end,
 }
 
+local executable_handlers = {
+    ["efm-langserver"] = function()
+        require("lsp.efmls")
+    end,
+    ["lua-language-server"] = function()
+        require("lsp.lua-ls")
+    end,
+    ["nil"] = function()
+        default_lsp_handler("nil_ls")
+    end,
+    ["pyright"] = function()
+        default_lsp_handler("pyright")
+    end,
+    ["rust-analyzer"] = function()
+        require("lsp.rust-ls")
+    end,
+    ["typescript-language-server"] = function()
+        default_lsp_handler("tsserver")
+    end,
+    ["terraform-ls"] = function()
+        default_lsp_handler("terraformls")
+    end,
+}
+
 -- this handles both cases:
 -- 1. the lsp is installed by mason
 -- 2. the lsp is installed in the system (e.g. nixos or home-manager)
-local function call_if_executable_exists(exe_name, fn)
+for exe_name, handler in pairs(executable_handlers) do
     if vim.fn.executable(exe_name) ~= 0 then
-        fn()
+        handler()
     end
 end
-
-call_if_executable_exists("efm-langserver", function()
-    require("lsp.efmls")
-end)
-
-call_if_executable_exists("lua-language-server", function()
-    require("lsp.lua-ls")
-end)
-
-call_if_executable_exists("nil", function()
-    default_lsp_handler("nil_ls")
-end)
-
-call_if_executable_exists("pyright", function()
-    default_lsp_handler("pyright")
-end)
-
-call_if_executable_exists("rust-analyzer", function()
-    require("lsp.rust-ls")
-end)
-
-call_if_executable_exists("typescript-language-server", function ()
-    default_lsp_handler("tsserver")
-end)
-
-call_if_executable_exists("terraform-ls", function ()
-    default_lsp_handler("terraformls")
-end)
 
 -- require("lspconfig").pest_ls.setup {}
