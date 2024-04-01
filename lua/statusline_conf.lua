@@ -20,7 +20,7 @@ require("lsp-progress").setup {
         local has_percent = false
         local has_done = false
         if percentage then
-            table.insert(builder, string.format("%.0f%%%%", percentage))
+            table.insert(builder, string.format("%.0f%%", percentage))
             has_percent = true
         end
         if done and not has_percent then
@@ -30,12 +30,14 @@ require("lsp-progress").setup {
         if not (has_percent or has_done) then
             local has_title = false
             if type(title) == "string" and string.len(title) > 0 then
-                local escaped_title = title:gsub("%%", "%%%%")
+                local escaped_title = title:gsub("%$", "")
+                escaped_title = escaped_title:gsub("%%", "%%%%")
                 table.insert(builder, escaped_title)
                 has_title = true
             end
             if not has_title and (type(message) == "string" and string.len(message) > 0) then
-                local escaped_message = message:gsub("%%", "%%%%")
+                local escaped_message = message:gsub("%$", "")
+                escaped_message = escaped_message:gsub("%%", "%%%%")
                 table.insert(builder, escaped_message)
             end
         end
