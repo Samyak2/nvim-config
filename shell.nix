@@ -5,5 +5,6 @@ pkgs.mkShell {
   buildInputs = [
     gcc
     stylua
+    lua-language-server
   ];
 }
