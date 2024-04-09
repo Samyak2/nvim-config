@@ -1,14 +1,13 @@
 return {
     {
-        "bluz71/vim-nightfly-colors",
+        "jesseleite/nvim-noirbuddy",
+        dependencies = {
+            { "tjdevries/colorbuddy.nvim" },
+        },
         lazy = false,
         priority = 1000,
-        config = function()
-            vim.cmd("colorscheme nightfly")
-        end,
+        opts = {
+            preset = "kiwi",
+        },
     },
-    {
-        "xiyaowong/transparent.nvim",
-        lazy = false,
-    }
 }
