@@ -67,6 +67,9 @@ local executable_handlers = {
     ["terraform-ls"] = function()
         default_lsp_handler("terraformls")
     end,
+    ["taplo"] = function()
+        default_lsp_handler("taplo")
+    end,
 
     -- these come from vscode-langservers-extracted
     ["vscode-eslint-language-server"] = function()
