@@ -1,4 +1,5 @@
 return {
+    -- TODO: not needed in neovim v0.10
     {
         "tpope/vim-commentary",
         keys = {
