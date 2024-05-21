@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
-current_dir=$(basename "$PWD")
+config_dir=$(dirname -- "$(realpath -- "$0")")
 
-if [[ $current_dir != "nvim" ]]; then
-  echo "Current directory needs to be called 'nvim'. Exiting..."
+if [[ $(basename $config_dir) != "nvim" ]]; then
+  echo "Current directory needs to be called 'nvim'. Got '$config_dir'. Exiting..."
   exit 1
 fi
 
-XDG_CONFIG_HOME=$PWD/.. nvim
+XDG_CONFIG_HOME="$config_dir/.." nvim

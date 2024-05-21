@@ -9,7 +9,6 @@ return {
 
             "nvim-neotest/neotest-python",
             "adrigzr/neotest-mocha",
-            "rouge8/neotest-rust",
         },
         config = function()
             require("neotest").setup {
@@ -18,7 +17,7 @@ return {
                         args = { "-vvv" },
                     },
                     require("neotest-mocha"),
-                    require("neotest-rust"),
+                    require("rustaceanvim.neotest"),
                 },
             }
         end,
