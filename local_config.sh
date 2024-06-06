@@ -7,4 +7,4 @@ if [[ $(basename $config_dir) != "nvim" ]]; then
   exit 1
 fi
 
-XDG_CONFIG_HOME="$config_dir/.." nvim
+XDG_CONFIG_HOME="$config_dir/.." nvim "$@"
