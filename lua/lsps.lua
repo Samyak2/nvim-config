@@ -65,6 +65,9 @@ local executable_handlers = {
     ["pyright"] = function()
         default_lsp_handler("pyright")
     end,
+    ["basedpyright"] = function()
+        default_lsp_handler("basedpyright")
+    end,
     ["rust-analyzer"] = function()
         require("lsp.rust-ls")
     end,
