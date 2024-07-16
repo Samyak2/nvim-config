@@ -22,30 +22,13 @@ require("mason-lspconfig").setup_handlers {
         require("lsp.go-ls")
     end,
     ["yamlls"] = function()
-        require("lspconfig").yamlls.setup {
-            settings = {
-                yaml = {
-                    schemaStore = {
-                        -- You must disable built-in schemaStore support if you want to use
-                        -- schemastore.nvim and its advanced options like `ignore`.
-                        enable = false,
-                        -- Avoid TypeError: Cannot read properties of undefined (reading 'length')
-                        url = "",
-                    },
-                    schemas = require("schemastore").yaml.schemas(),
-                },
-            },
-        }
+        require("lsp.yaml-ls")
     end,
     ["jsonls"] = function()
-        require("lspconfig").jsonls.setup {
-            settings = {
-                json = {
-                    schemas = require("schemastore").json.schemas(),
-                    validate = { enable = true },
-                },
-            },
-        }
+        require("lsp.json-ls")
+    end,
+    ["basedpyright"] = function()
+        require("lsp.basedpyright-ls")
     end,
     -- ["pest_ls"] = function()
     -- 	require("pest-vim").setup(require("lsp").common_opts())
@@ -66,7 +49,7 @@ local executable_handlers = {
         default_lsp_handler("pyright")
     end,
     ["basedpyright"] = function()
-        default_lsp_handler("basedpyright")
+        require("lsp.basedpyright-ls")
     end,
     ["rust-analyzer"] = function()
         require("lsp.rust-ls")
@@ -89,7 +72,7 @@ local executable_handlers = {
         default_lsp_handler("html")
     end,
     ["vscode-json-language-server"] = function()
-        default_lsp_handler("jsonls")
+        require("lsp.json-ls")
     end,
     ["vscode-css-language-server"] = function()
         default_lsp_handler("cssls")
