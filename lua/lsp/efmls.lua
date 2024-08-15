@@ -1,6 +1,7 @@
 local languages = require("lsp.efm-languages").languages
 
 local efmls_config = {
+    single_file_support = true,
     filetypes = vim.tbl_keys(languages),
     settings = {
         rootMarkers = { ".git/" },
@@ -9,7 +10,10 @@ local efmls_config = {
     init_options = {
         documentFormatting = true,
         documentRangeFormatting = true,
+        hover = true,
+        documentSymbol = true,
         codeAction = true,
+        completion = true
     },
 }
 
