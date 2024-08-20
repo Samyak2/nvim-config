@@ -51,10 +51,13 @@ ret.languages = vim.tbl_extend("force", languages, {
             ),
             lintStdin = true,
             lintIgnoreExitCode = true,
+            -- Ref: https://vim-jp.org/vimdoc-en/quickfix.html#error-file-format
+            -- Example output from SQLFluff:
+            -- ::warning title=SQLFluff,file=abc.sql,line=10,col=34,endLine=10,endColumn=60::RF02: Unqualified reference 'abc' found in select with more than one referenced table/view. [references.qualification]
             lintFormats = {
-                "::%totice title=SQLFluff,file=%f,line=%l,col=%c::%m",
-                "::%tarning title=SQLFluff,file=%f,line=%l,col=%c::%m",
-                "::%trror title=SQLFluff,file=%f,line=%l,col=%c::%m",
+                "::%totice title=SQLFluff,file=%f,line=%l,col=%c,endLine=%e,endColumn=%k::%m",
+                "::%tarning title=SQLFluff,file=%f,line=%l,col=%c,endLine=%e,endColumn=%k::%m",
+                "::%trror title=SQLFluff,file=%f,line=%l,col=%c,endLine=%e,endColumn=%k::%m",
             },
             rootMarkers = {
                 ".sqlfluff",
