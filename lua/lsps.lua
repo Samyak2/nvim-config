@@ -63,6 +63,9 @@ local executable_handlers = {
     ["taplo"] = function()
         default_lsp_handler("taplo")
     end,
+    ["ruff"] = function ()
+        default_lsp_handler("ruff")
+    end,
 
     -- these come from vscode-langservers-extracted
     ["vscode-eslint-language-server"] = function()
