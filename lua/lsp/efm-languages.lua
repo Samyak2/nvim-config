@@ -29,6 +29,7 @@ ret.languages = vim.tbl_extend("force", languages, {
     },
     python = {
         require("efmls-configs.formatters.black"),
+        require('efmls-configs.formatters.ruff'),
         {
             formatCommand = string.format("%s --profile black --quiet -", fs.executable("isort")),
             formatStdin = true,
