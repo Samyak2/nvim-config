@@ -55,7 +55,7 @@ local executable_handlers = {
         require("lsp.rust-ls")
     end,
     ["typescript-language-server"] = function()
-        default_lsp_handler("tsserver")
+        default_lsp_handler("ts_ls")
     end,
     ["terraform-ls"] = function()
         default_lsp_handler("terraformls")
