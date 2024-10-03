@@ -66,6 +66,9 @@ local executable_handlers = {
     ["ruff"] = function ()
         default_lsp_handler("ruff")
     end,
+    ["harper-ls"] = function ()
+        default_lsp_handler("harper_ls")
+    end,
 
     -- these come from vscode-langservers-extracted
     ["vscode-eslint-language-server"] = function()
