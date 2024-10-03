@@ -41,6 +41,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
         -- Mappings.
         vim.keymap.set("n", "gD", vim.lsp.buf.declaration, keymap_opts)
         vim.keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<cr>", keymap_opts)
+        vim.keymap.set("n", "gi", "<cmd>Telescope lsp_type_definitions<cr>", keymap_opts)
         vim.keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<cr>", keymap_opts)
         vim.keymap.set("n", "gr", "<cmd>Telescope lsp_references<cr>", keymap_opts)
         vim.keymap.set("n", "K", vim.lsp.buf.hover, keymap_opts)
