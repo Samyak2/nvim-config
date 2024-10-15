@@ -1,16 +1,25 @@
 ---@type LazySpec
 return {
+    -- {
+    --     "olivercederborg/poimandres.nvim",
+    --     lazy = false,
+    --     priority = 1000,
+    --     config = function()
+    --         require("poimandres").setup {
+    --             disable_background = true,
+    --         }
+    --     end,
+    --     init = function()
+    --         vim.cmd("colorscheme poimandres")
+    --     end,
+    -- },
     {
-        "olivercederborg/poimandres.nvim",
+        "nyoom-engineering/oxocarbon.nvim",
         lazy = false,
         priority = 1000,
-        config = function()
-            require("poimandres").setup {
-                disable_background = true,
-            }
-        end,
         init = function()
-            vim.cmd("colorscheme poimandres")
+            vim.opt.background = "dark"
+            vim.cmd("colorscheme oxocarbon")
         end,
     },
 }
