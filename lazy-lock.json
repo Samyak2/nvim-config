@@ -40,7 +40,7 @@
   "oxocarbon.nvim": { "branch": "main", "commit": "004777819ba294423b638a35a75c9f0c7be758ed" },
   "plenary.nvim": { "branch": "master", "commit": "2d9b06177a975543726ce5c73fca176cedbffe9d" },
   "popup.nvim": { "branch": "master", "commit": "b7404d35d5d3548a82149238289fa71f7f6de4ac" },
-  "rustaceanvim": { "branch": "master", "commit": "047f9c9d8cd2861745eb9de6c1570ee0875aa795" },
+  "rustaceanvim": { "branch": "master", "commit": "6eb1c41463a0ad02a4fe799321cc7f651b87e576" },
   "schemastore.nvim": { "branch": "main", "commit": "3c1db9e0fdb648c0dd6663ed11c6b261bfed22eb" },
   "telescope-fzy-native.nvim": { "branch": "master", "commit": "282f069504515eec762ab6d6c89903377252bf5b" },
   "telescope.nvim": { "branch": "master", "commit": "df534c3042572fb958586facd02841e10186707c" },
