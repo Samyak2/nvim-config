@@ -24,6 +24,7 @@ return {
             },
             {
                 "r",
+                -- operator pending mode
                 mode = "o",
                 function()
                     require("flash").remote()
