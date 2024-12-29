@@ -54,6 +54,9 @@ local executable_handlers = {
     ["rust-analyzer"] = function()
         require("lsp.rust-ls")
     end,
+    ["zls"] = function ()
+        default_lsp_handler("zls")
+    end,
     ["typescript-language-server"] = function()
         default_lsp_handler("ts_ls")
     end,
