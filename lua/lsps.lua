@@ -54,7 +54,7 @@ local executable_handlers = {
     ["rust-analyzer"] = function()
         require("lsp.rust-ls")
     end,
-    ["zls"] = function ()
+    ["zls"] = function()
         default_lsp_handler("zls")
     end,
     ["typescript-language-server"] = function()
@@ -66,13 +66,13 @@ local executable_handlers = {
     ["taplo"] = function()
         default_lsp_handler("taplo")
     end,
-    ["ruff"] = function ()
+    ["ruff"] = function()
         default_lsp_handler("ruff")
     end,
-    ["harper-ls"] = function ()
+    ["harper-ls"] = function()
         default_lsp_handler("harper_ls")
     end,
-    ["jdtls"] = function ()
+    ["jdtls"] = function()
         default_lsp_handler("jdtls")
     end,
 

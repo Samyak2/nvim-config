@@ -6,4 +6,3 @@ require("lspconfig").jsonls.setup {
         },
     },
 }
-

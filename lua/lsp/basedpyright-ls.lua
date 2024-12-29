@@ -7,4 +7,3 @@ require("lspconfig").basedpyright.setup {
         },
     },
 }
-

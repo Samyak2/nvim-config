@@ -23,7 +23,7 @@ vim.g.rustaceanvim = {
                 files = {
                     excludeDirs = {
                         ".direnv",
-                        "target"
+                        "target",
                     },
                 },
             },
