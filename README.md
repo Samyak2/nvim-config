@@ -4,9 +4,9 @@ My custom neovim configuration written in (mostly) lua.
 
 ## Requirements
 
- - neovim v0.9.5 (untested on other versions, might work)
+ - neovim v0.10 (untested on other versions, might work)
  - [ripgrep](https://github.com/BurntSushi/ripgrep#installation)
-    - for telescope fuzzy finding in files
+    - for snacks picker fuzzy finding in files
  - `go` (>=1.16)
     - to install [`efm`](https://github.com/mattn/efm-langserver) which provides linting and formatting for many languages
  - `gcc`
