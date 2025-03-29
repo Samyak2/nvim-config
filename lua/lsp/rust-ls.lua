@@ -1,6 +1,6 @@
 vim.g.rustaceanvim = {
     server = vim.tbl_deep_extend("force", require("lsp").common_opts(), {
-        capabilities = {
+        capabilities = require("blink.cmp").get_lsp_capabilities {
             workspace = {
                 -- https://github.com/hrsh7th/cmp-nvim-lsp/issues/44#issuecomment-2096368152
                 -- but also needed files.excludeDirs below

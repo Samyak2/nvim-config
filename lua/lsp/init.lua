@@ -74,7 +74,7 @@ function ret.common_on_attach(client, bufnr) end
 
 ret.common_opts = function()
     return {
-        capabilities = require("cmp_nvim_lsp").default_capabilities(),
+        capabilities = require('blink.cmp').get_lsp_capabilities(),
         on_attach = ret.common_on_attach,
     }
 end
