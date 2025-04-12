@@ -4,7 +4,7 @@ My custom neovim configuration written in (mostly) lua.
 
 ## Requirements
 
- - neovim v0.10 (untested on other versions, might work)
+ - neovim v0.11 (untested on other versions, might work)
  - [ripgrep](https://github.com/BurntSushi/ripgrep#installation)
     - for snacks picker fuzzy finding in files
  - `go` (>=1.16)
