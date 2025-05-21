@@ -5,12 +5,14 @@ return {
         cmd = { "LspInfo", "LspInstall", "LspUninstall" },
         dependencies = {
             {
-                "williamboman/mason.nvim",
+                "mason-org/mason.nvim",
+                version = "^1.0.0",
                 build = ":MasonUpdate",
             },
 
             {
-                "williamboman/mason-lspconfig.nvim",
+                "mason-org/mason-lspconfig.nvim",
+                version = "^1.0.0",
             },
 
             {
