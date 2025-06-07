@@ -2,10 +2,33 @@ return {
     "folke/snacks.nvim",
     ---@type snacks.Config
     opts = {
+        ---@class snacks.picker.Config
         picker = {
-            -- your picker configuration comes here
-            -- or leave it empty to use the default settings
-            -- refer to the configuration section below
+            win = {
+                -- Make file truncation consider window width.
+                -- <https://github.com/folke/snacks.nvim/issues/1217#issuecomment-2661465574>
+                list = {
+                    on_buf = function(self)
+                        self:execute("calculate_file_truncate_width")
+                    end,
+                },
+                preview = {
+                    on_buf = function(self)
+                        self:execute("calculate_file_truncate_width")
+                    end,
+                    on_close = function(self)
+                        self:execute("calculate_file_truncate_width")
+                    end,
+                },
+            },
+            actions = {
+                -- Make file truncation consider window width.
+                -- <https://github.com/folke/snacks.nvim/issues/1217#issuecomment-2661465574>
+                calculate_file_truncate_width = function(self)
+                    local width = self.list.win:size().width
+                    self.opts.formatters.file.truncate = width - 6
+                end,
+            },
         },
     },
     keys = {
