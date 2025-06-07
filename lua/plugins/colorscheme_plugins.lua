@@ -13,13 +13,22 @@ return {
     --         vim.cmd("colorscheme poimandres")
     --     end,
     -- },
+    -- {
+    --     "nyoom-engineering/oxocarbon.nvim",
+    --     lazy = false,
+    --     priority = 1000,
+    --     init = function()
+    --         vim.opt.background = "dark"
+    --         vim.cmd("colorscheme oxocarbon")
+    --     end,
+    -- },
     {
-        "nyoom-engineering/oxocarbon.nvim",
+        "jacoborus/tender.vim",
         lazy = false,
         priority = 1000,
         init = function()
             vim.opt.background = "dark"
-            vim.cmd("colorscheme oxocarbon")
+            vim.cmd("colorscheme tender")
         end,
     },
 }
