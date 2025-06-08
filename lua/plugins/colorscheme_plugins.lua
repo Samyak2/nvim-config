@@ -22,13 +22,22 @@ return {
     --         vim.cmd("colorscheme oxocarbon")
     --     end,
     -- },
+    -- {
+    --     "jacoborus/tender.vim",
+    --     lazy = false,
+    --     priority = 1000,
+    --     init = function()
+    --         vim.opt.background = "dark"
+    --         vim.cmd("colorscheme tender")
+    --     end,
+    -- },
     {
-        "jacoborus/tender.vim",
-        lazy = false,
-        priority = 1000,
+        "EdenEast/nightfox.nvim",
+        -- lazy = false,
+        -- priority = 1000,
         init = function()
             vim.opt.background = "dark"
-            vim.cmd("colorscheme tender")
+            vim.cmd("colorscheme terafox")
         end,
     },
 }

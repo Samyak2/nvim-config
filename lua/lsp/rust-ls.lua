@@ -13,6 +13,19 @@ vim.g.rustaceanvim = {
             vim.keymap.set("n", "<leader>ca", function()
                 vim.cmd.RustLsp("codeAction")
             end, { silent = true, buffer = bufnr })
+
+            vim.keymap.set("n", "<leader>d", function()
+                vim.cmd.RustLsp("openDocs")
+            end, { silent = true, buffer = bufnr })
+
+            vim.keymap.set(
+                "n",
+                "K", -- Override Neovim's built-in hover keymap with rustaceanvim's hover actions
+                function()
+                    vim.cmd.RustLsp { "hover", "actions" }
+                end,
+                { silent = true, buffer = bufnr }
+            )
         end,
         default_settings = {
             -- rust-analyzer language server configuration
