@@ -14,9 +14,19 @@ vim.g.rustaceanvim = {
                 vim.cmd.RustLsp("codeAction")
             end, { silent = true, buffer = bufnr })
 
-            vim.keymap.set("n", "<leader>d", function()
+            vim.keymap.set("n", "<leader>k", function()
                 vim.cmd.RustLsp("openDocs")
             end, { silent = true, buffer = bufnr })
+
+            vim.keymap.set("n", "<leader>d", function()
+                require("lazy").load { plugins = { "nvim-dap-virtual-text" } }
+                vim.cmd.RustLsp("debuggables")
+            end, { buffer = bufnr })
+
+            vim.keymap.set("n", "<leader>D", function()
+                require("lazy").load { plugins = { "nvim-dap-virtual-text" } }
+                vim.cmd.RustLsp("debug")
+            end, { buffer = bufnr })
 
             vim.keymap.set(
                 "n",

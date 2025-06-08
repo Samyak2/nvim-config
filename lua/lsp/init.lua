@@ -40,7 +40,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
         -- Mappings.
         vim.keymap.set("n", "K", vim.lsp.buf.hover, keymap_opts)
-        vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, keymap_opts)
+        -- vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, keymap_opts)
         vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, keymap_opts)
         vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, keymap_opts)
         vim.keymap.set("n", "<space>wl", function()
