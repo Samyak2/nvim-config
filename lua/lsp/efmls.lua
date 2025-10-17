@@ -17,4 +17,5 @@ local efmls_config = {
     },
 }
 
-require("lspconfig").efm.setup(vim.tbl_extend("force", efmls_config, require("lsp").common_opts()))
+vim.lsp.config("efm", vim.tbl_extend("force", efmls_config, require("lsp").common_opts()))
+vim.lsp.enable("efm")

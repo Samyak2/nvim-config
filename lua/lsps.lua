@@ -5,11 +5,10 @@ require("mason_conf")
 --   -- add any options here, or leave empty to use the default settings
 -- })
 
-local lspconfig = require("lspconfig")
-
 local function default_lsp_handler(server_name)
     local opts = vim.tbl_deep_extend("force", require("lsp").common_opts(), {})
-    lspconfig[server_name].setup(opts)
+    vim.lsp.config(server_name, opts)
+    vim.lsp.enable(server_name)
 end
 
 require("mason-lspconfig").setup_handlers {
@@ -99,5 +98,3 @@ for exe_name, handler in pairs(executable_handlers) do
         handler()
     end
 end
-
--- require("lspconfig").pest_ls.setup {}

@@ -1,4 +1,4 @@
-require("lspconfig").jsonls.setup(vim.tbl_deep_extend("force", require("lsp").common_opts(), {
+vim.lsp.config("jsonls", vim.tbl_deep_extend("force", require("lsp").common_opts(), {
     settings = {
         json = {
             schemas = require("schemastore").json.schemas(),
@@ -6,3 +6,4 @@ require("lspconfig").jsonls.setup(vim.tbl_deep_extend("force", require("lsp").co
         },
     },
 }))
+vim.lsp.enable("jsonls")

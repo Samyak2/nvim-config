@@ -1,4 +1,4 @@
-require("lspconfig").yamlls.setup(vim.tbl_deep_extend("force", require("lsp").common_opts(), {
+vim.lsp.config("yamlls", vim.tbl_deep_extend("force", require("lsp").common_opts(), {
     settings = {
         yaml = {
             schemaStore = {
@@ -12,4 +12,4 @@ require("lspconfig").yamlls.setup(vim.tbl_deep_extend("force", require("lsp").co
         },
     },
 }))
-
+vim.lsp.enable("yamlls")
