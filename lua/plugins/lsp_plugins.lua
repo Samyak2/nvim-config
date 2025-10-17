@@ -1,6 +1,7 @@
 return {
     {
         "neovim/nvim-lspconfig",
+        lazy = false,
         cmd = { "LspInfo", "LspInstall", "LspUninstall" },
         dependencies = {
             {
