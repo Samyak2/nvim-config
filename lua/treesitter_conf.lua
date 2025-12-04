@@ -59,6 +59,7 @@ require("nvim-treesitter").install {
     "terraform",
     "thrift",
     "tmux",
+    "toml",
     "tsx",
     "typescript",
     "xml",
